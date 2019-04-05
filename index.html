@@ -1421,8 +1421,8 @@ form
 for each possible substitution u for variables in <em>V</em>, if
 <em>E<sub>1</sub><sup>u</sup></em> is satisfied then <em>E<sub>2</sub><sup>u</sup></em> must
 also be satisfied in the current state of the world. Note that this use
-of the keyword âforallâ is distinct from its use in add and delete lists
-in operators (see Section 4.10); the latter is used to express a set of
+of the keyword <code>forall</code> is distinct from its use in add and delete lists
+in operators (see <a href="#Operators">Operators</a>): the latter is used to express a set of
 effects rather than a logical expression and consequently has a
 different syntax.
 </p>
@@ -1432,6 +1432,7 @@ different syntax.
 Next: <a href="#Eval-expressions" accesskey="n" rel="next">Eval expressions</a>, Previous: <a href="#Universal-Quantifications" accesskey="p" rel="prev">Universal Quantifications</a>, Up: <a href="#Logical-Expressions" accesskey="u" rel="up">Logical Expressions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Assignments-1"></span><h4 class="subsection">4.5.6 Assignments</h4>
+<span id="index-assignment"></span>
 <span id="g_t_0023assignments"></span><p>A simple <strong>assignment</strong> expression has the form
 </p>
 <div class="lisp">
@@ -1442,9 +1443,9 @@ Next: <a href="#Eval-expressions" accesskey="n" rel="next">Eval expressions</a>,
 expression. The intent of an assignment expression is to bind the value
 of <em>e</em> to the variable symbol <em>v</em>. Variable substitutions in
 assignment expressions are done using literal substitutions, as with
-eval terms (see Section 4.3.2). For example, if ?foo is bound to the
-symbol IF and ?bar is bound to the number 0 then the following
-expression will bind the variable ?baz to the list (IF FISH):
+eval terms (see Section 4.3.2). For example, if <code>?foo</code> is bound to the
+symbol <code>IF</code> and <code>?bar </code>is bound to the number 0 then the following
+expression will bind the variable <code>?baz</code> to the list <code>(IF FISH)</code>:
 </p>
 <div class="lisp">
 <pre class="lisp">(assign ?baz (?foo (&lt; ?bar 3) (list '?foo 'fish) (/ 8 ?bar)))
@@ -1771,7 +1772,7 @@ a task atom with a task symbol that begins with an exclamation point)
 <em>precondition</em> is a logical expression.
 
 </li><li> The operator&rsquo;s
-<em>delete-list</em>) is a list for which each
+<em>delete-list</em> is a list for which each
 of the element may be any of following:
 
 <ul>
@@ -1786,7 +1787,7 @@ a list of logical atoms
 </li></ul>
 
 </li><li> The operator&rsquo;s
-<em>add-list</em>) is a list of logical atoms
+<em>add-list</em> is a list of logical atoms
 that has the same form as the delete-list.
 
 </li><li> <em>cost-fn</em> (the operator&rsquo;s <strong>cost</strong>) is a general Lisp expression. If
@@ -1966,14 +1967,10 @@ considered. Consequently, the following code:
 </p>
 <div class="lisp">
 <pre class="lisp">(:method (eat ?food)
-
-(have-fork ?fork)
-
-((!eat-with-fork ?food ?fork))
-
-(have-spoon ?spoon)
-
-((!eat-with-spoon ?food ?spoon))
+    (have-fork ?fork)
+    ((!eat-with-fork ?food ?fork))
+    (have-spoon ?spoon)
+    ((!eat-with-spoon ?food ?spoon))
 </pre></div>
 <p>is semantically equivalent to the following code with multiple methods
 and explicitly exclusive preconditions:
@@ -1989,7 +1986,7 @@ and explicitly exclusive preconditions:
 </pre></div>
 <p>In both of the above examples, the !eat-with-spoon operator may be
 performed only if the (have-spoon ?spoon) is satisfied <em>and</em>
-(have-fork ?fork) is not satisfied.
+<code>(have-fork ?fork)</code> is not satisfied.
 </p>
 <hr>
 <span id="Planning-Domain"></span><div class="header">
@@ -2030,8 +2027,7 @@ Beginning users of SHOP should simply use the simple domain-name form of
 this argument.
 </p>
 <p>Each item <em>i<sub>i</sub></em> is one of the following: an operator, a
-method, or an axiom. Note that domain names are not used in <small>SHOP3</small>; they
-are left in the syntax for backward compatibility.
+method, or an axiom.
 </p>
 <hr>
 <span id="Extended-form"></span><div class="header">
@@ -2312,24 +2308,27 @@ set of methods with mutually-exclusive and exhaustive preconditions.
 Next: <a href="#PDDL-Domain-Classes" accesskey="n" rel="next">PDDL Domain Classes</a>, Previous: <a href="#PDDL-Methods" accesskey="p" rel="prev">PDDL Methods</a>, Up: <a href="#PDDL-Methods" accesskey="u" rel="up">PDDL Methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Enhanced-Preconditions-1"></span><h4 class="subsection">5.1.1 Enhanced Preconditions</h4>
-<span id="g_t_0023enhanced_002dpreconditions"></span><p>PDDL method preconditions are based on PDDL <em>goals</em>, but with the
+<span id="index-PDDL-method-preconditions"></span>
+<span id="index-Sorting-in-PDDL-method-preconditions"></span>
+<p>PDDL method preconditions are based on PDDL <em>goals</em>, but with the
 following extensions:
 </p>
 <ul>
-<li> A PDDL method&rsquo;s preconditions may use the <code>:sort-by</code>        keyword. More
+<li> A PDDL method&rsquo;s preconditions may use the <code>:sort-by</code>  keyword. More
 precisely:
 
-</li></ul>
+<div class="example">
+<pre class="example"><em>P</em>           ::= PDDL goal
+<em>v</em>           ::= PDDL/SHOP variable
+<em>P_v</em>        ::= PDDL goal with <em>v</em> appearing free
+precond             ::= <em>P</em> |
+                               <em>P_v</em> with <em>v</em> a method parameter |
+                               <tt>(:sort-by</tt> <em>v</em> [&lt;rel&gt;] <em>P_v</em>
+</pre></div>
 
-<blockquote>
-<p>precond ::= &lt;PDDL goalÏ&gt;|
-</p>
-<p>(:sort-by &lt;var&gt; [&lt;rel&gt;] &lt;PDDL goal<sub>&lt;var&gt;,Ï</sub>&gt;
-</p></blockquote>
-<ul>
-<li> As noted above, variables that appear free in the head of the PDDL
-method may appear free in the precondition, hence the use of &lt;PDDL
-goalÏ&gt; and &lt;PDDL goal<sub>&lt;var&gt;,Ï</sub>&gt;.
+</li><li> Variables that appear free in the head of the PDDL
+method may appear free in the precondition, hence the use of <em>P</em>
+and <em>P_v</em>.
 
 </li></ul>
 
@@ -2347,43 +2346,57 @@ could change.
 Previous: <a href="#Enhanced-Preconditions" accesskey="p" rel="prev">Enhanced Preconditions</a>, Up: <a href="#PDDL-Methods" accesskey="u" rel="up">PDDL Methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="PDDL-Domain-Classes-1"></span><h4 class="subsection">5.1.2 PDDL Domain Classes</h4>
-<span id="g_t_0023pddl_002ddomain_002dclasses"></span><p>In order to implement the requirements of PDDL, <small>SHOP3</small> contains a number
-of classes, which can be used when defining domains with defdomain (see
-Section 4.12):
+
+<p>In order to implement the requirements of PDDL, <small>SHOP3</small> contains a number
+of classes, which can be used when defining domains with <code>defdomain</code>
+(see <a href="#Planning-Domain">Planning Domain</a>).
 </p>
 <ul>
-<li> SIMPLE-PDDL-DOMAIN &ndash; this is the base class. All PDDL domain classes
+<li> <span id="index-SIMPLE_002dPDDL_002dDOMAIN"></span>
+<code>SIMPLE-PDDL-DOMAIN</code> &ndash; this is the base class. All PDDL domain classes
 should include this class.
 
-</li><li> PDDL-DOMAIN &ndash; for historical reasons, this class corresponds roughly to
+</li><li> <span id="index-PDDL_002dDOMAIN"></span>
+<code>PDDL-DOMAIN</code> &ndash; for historical reasons, this class corresponds roughly to
 PDDL domains with the ADL requirements. Use of this class is
 <em>deprecated;</em> it was added without sufficient thought.
 
-</li><li> ADL-DOMAIN &ndash; SIMPLE-PDDL-DOMAIN with ADL-MIXIN (see below).
+</li><li> <span id="index-ADL_002dDOMAIN"></span>
+<code>ADL-DOMAIN</code> &ndash; <code>SIMPLE-PDDL-DOMAIN</code> with <code>ADL-MIXIN</code> (see below).
 
 </li><li> Mixin classes for different requirements:
 
 <ul>
-<li> NEGATIVE-PRECONDITIONS-MIXIN
+<li> <span id="index-NEGATIVE_002dPRECONDITIONS_002dMIXIN"></span>
+<code>NEGATIVE-PRECONDITIONS-MIXIN</code>
 
-</li><li> DISJUNCTIVE-PRECONDITIONS-MIXIN
+</li><li> <span id="index-DISJUNCTIVE_002dPRECONDITIONS_002dMIXIN"></span>
+<code>DISJUNCTIVE-PRECONDITIONS-MIXIN</code>
 
-</li><li> UNIVERSAL-PRECONDITIONS-MIXIN
+</li><li> <span id="index-UNIVERSAL_002dPRECONDITIONS_002dMIXIN"></span>
+<code>UNIVERSAL-PRECONDITIONS-MIXIN</code>
 
-</li><li> EXISTENTIAL-PRECONDITIONS-MIXIN
+</li><li> <span id="index-EXISTENTIAL_002dPRECONDITIONS_002dMIXIN"></span>
+<code>EXISTENTIAL-PRECONDITIONS-MIXIN</code>
 
-</li><li> QUANTIFIED-PRECONDITIONS-MIXIN &ndash; this simply inherits universal and
+</li><li> <span id="index-QUANTIFIED_002dPRECONDITIONS_002dMIXIN"></span>
+<code>QUANTIFIED-PRECONDITIONS-MIXIN</code> &ndash; this simply inherits universal and
 existential preconditions, since they are typically used together.
 
-</li><li> CONDITIONAL-EFFECTS-MIXIN
+</li><li> <span id="index-CONDITIONAL_002dEFFECTS_002dMIXIN"></span>
+<code>CONDITIONAL-EFFECTS-MIXIN</code>
 
-</li><li> EQUALITY-MIXIN
+</li><li> <span id="index-EQUALITY_002dMIXIN"></span>
+<code>EQUALITY-MIXIN</code>
 
-</li><li> PDDL-TYPING-MIXIN
+</li><li> <span id="index-PDDL_002dTYPING_002dMIXIN"></span>
+<code>PDDL-TYPING-MIXIN</code>
 
-</li><li> COSTS-MIXIN
+</li><li> <span id="index-COSTS_002dMIXIN"></span>
+<code>COSTS-MIXIN</code>
 
-</li><li> ADL-MIXIN
+</li><li> <span id="index-ADL_002dMIXIN"></span>
+<code>ADL-MIXIN</code>
 
 </li></ul>
 
@@ -2610,16 +2623,16 @@ If you ask for plan trees from <code>shop</code>, you really get plan *forests*.
 <dt id="index-enhanced_002dplan_002dtree_002dgraph-_005bspg_005d-1">Class: <strong>enhanced-plan-tree-graph [spg]</strong></dt>
 <dd><p>Class precedence list: <code>enhanced-plan-tree-graph, standard-object, t</code>
 </p>
-<p>A null class that the user subclass to
-tailor display of plan graphs.
+<p>A null class that the user may subclass to
+tailor display of <code>shop</code> enhanced plan trees.
 </p></dd></dl>
 <span id="index-plan_002dtree_002dgraph-_005bspg_005d"></span>
 <span id="Class-spg_003aplan_002dtree_002dgraph"></span><dl>
 <dt id="index-plan_002dtree_002dgraph-_005bspg_005d-1">Class: <strong>plan-tree-graph [spg]</strong></dt>
 <dd><p>Class precedence list: <code>plan-tree-graph, standard-object, t</code>
 </p>
-<p>A null class that the user subclass to
-tailor display of plan graphs.
+<p>A null class that the user may subclass to
+tailor display of <code>shop</code> plan trees.
 </p></dd></dl>
 
 <hr>
@@ -3533,10 +3546,10 @@ problems in <em>list-of-problems</em>. (More specifically, what it does is
 to store <em>list-of-problems</em> on <em>set-name</em>&rsquo;s property list.)
 </p>
 <p>Note that for backwards compatibility, <small>SHOP3</small> also accepts the forms
-make-domain, make-problem, and make-problem-set, which were employed in
-SHOP 1.x, using the same arguments as defdomain, defproblem, and
-def-problem-set. The difference between the make-X and def-X forms is
-that in the latter case since the form itself is a macro, the arguments
+<code>make-domain</code>, <code>make-problem</code>, and <code>make-problem-set</code>, which were employed in
+SHOP 1.x, using the same arguments as <code>defdomain</code>, <code>defproblem</code>, and
+<code>def-problem-set</code>. The difference between the <code>make-<i>X</i></code> and <code>def-<i>X</i></code> forms is
+that in the latter case since the form is a macro, the arguments
 are not evaluated. This changes the syntax one uses. Thus in a SHOP 1.x
 domain one might define a problem as
 </p>
@@ -4241,42 +4254,97 @@ Next: <a href="#Type-and-Class-Index" accesskey="n" rel="next">Type and Class In
 Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Previous: <a href="#Function-Index" accesskey="p" rel="prev">Function Index</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Type-and-Class-Index-1"></span><h2 class="unnumbered">Type and Class Index</h2>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Type-and-Class-Index_tp_letter-B"><b>B</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Type-and-Class-Index_tp_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Type-and-Class-Index_tp_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Type-and-Class-Index_tp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Type-and-Class-Index_tp_letter-D"><b>D</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Type-and-Class-Index_tp_letter-E"><b>E</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Type-and-Class-Index_tp_letter-N"><b>N</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Type-and-Class-Index_tp_letter-P"><b>P</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Type-and-Class-Index_tp_letter-Q"><b>Q</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Type-and-Class-Index_tp_letter-S"><b>S</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Type-and-Class-Index_tp_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Type-and-Class-Index_tp_letter-U"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
 <table class="index-tp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Type-and-Class-Index_tp_letter-A">A</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ADL_002dDOMAIN"><code>ADL-DOMAIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ADL_002dMIXIN"><code>ADL-MIXIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Type-and-Class-Index_tp_letter-B">B</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-binding-_005bshopunif_005d"><code>binding [shopunif]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Unifier">The SHOP Unifier</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-binding-_005bshopunif_005d-1"><code>binding [shopunif]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Unifier">The SHOP Unifier</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Type-and-Class-Index_tp_letter-C">C</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-CONDITIONAL_002dEFFECTS_002dMIXIN"><code>CONDITIONAL-EFFECTS-MIXIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-COSTS_002dMIXIN"><code>COSTS-MIXIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Type-and-Class-Index_tp_letter-D">D</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-DISJUNCTIVE_002dPRECONDITIONS_002dMIXIN"><code>DISJUNCTIVE-PRECONDITIONS-MIXIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Type-and-Class-Index_tp_letter-E">E</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-enhanced_002dplan_002dtree_002dgraph-_005bspg_005d"><code>enhanced-plan-tree-graph [spg]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Plan-Grapher">Plan Grapher</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-enhanced_002dplan_002dtree_002dgraph-_005bspg_005d-1"><code>enhanced-plan-tree-graph [spg]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Plan-Grapher">Plan Grapher</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-EQUALITY_002dMIXIN"><code>EQUALITY-MIXIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-EXISTENTIAL_002dPRECONDITIONS_002dMIXIN"><code>EXISTENTIAL-PRECONDITIONS-MIXIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Type-and-Class-Index_tp_letter-N">N</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-NEGATIVE_002dPRECONDITIONS_002dMIXIN"><code>NEGATIVE-PRECONDITIONS-MIXIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Type-and-Class-Index_tp_letter-P">P</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-PDDL_002dDOMAIN"><code>PDDL-DOMAIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-PDDL_002dTYPING_002dMIXIN"><code>PDDL-TYPING-MIXIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-plan_002dtree_002dgraph-_005bspg_005d"><code>plan-tree-graph [spg]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Plan-Grapher">Plan Grapher</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-plan_002dtree_002dgraph-_005bspg_005d-1"><code>plan-tree-graph [spg]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Plan-Grapher">Plan Grapher</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Type-and-Class-Index_tp_letter-Q">Q</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-QUANTIFIED_002dPRECONDITIONS_002dMIXIN"><code>QUANTIFIED-PRECONDITIONS-MIXIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Type-and-Class-Index_tp_letter-S">S</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-SIMPLE_002dPDDL_002dDOMAIN"><code>SIMPLE-PDDL-DOMAIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Type-and-Class-Index_tp_letter-T">T</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-thpr_002ddomain-_005bshopthpr_005d"><code>thpr-domain [shopthpr]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Theorem-Prover">The SHOP Theorem Prover</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-thpr_002ddomain-_005bshopthpr_005d-1"><code>thpr-domain [shopthpr]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Theorem-Prover">The SHOP Theorem Prover</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Type-and-Class-Index_tp_letter-U">U</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-UNIVERSAL_002dPRECONDITIONS_002dMIXIN"><code>UNIVERSAL-PRECONDITIONS-MIXIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Type-and-Class-Index_tp_letter-B"><b>B</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Type-and-Class-Index_tp_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Type-and-Class-Index_tp_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Type-and-Class-Index_tp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Type-and-Class-Index_tp_letter-D"><b>D</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Type-and-Class-Index_tp_letter-E"><b>E</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Type-and-Class-Index_tp_letter-N"><b>N</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Type-and-Class-Index_tp_letter-P"><b>P</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Type-and-Class-Index_tp_letter-Q"><b>Q</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Type-and-Class-Index_tp_letter-S"><b>S</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Type-and-Class-Index_tp_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Type-and-Class-Index_tp_letter-U"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
 
@@ -4337,6 +4405,7 @@ Next: <a href="#Colophon" accesskey="n" rel="next">Colophon</a>, Previous: <a hr
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Concept-Index_cp_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-anonymous-variables">anonymous variables</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Syntax-Checks">Syntax Checks</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-assignment">assignment</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Assignments">Assignments</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Concept-Index_cp_letter-D">D</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-domain-inclusion">domain inclusion</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Inclusion-directives">Inclusion directives</a></td></tr>
@@ -4352,11 +4421,13 @@ Next: <a href="#Colophon" accesskey="n" rel="next">Colophon</a>, Previous: <a hr
 <tr><td></td><td valign="top"><a href="#index-internal-operators">internal operators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Operators">Operators</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Concept-Index_cp_letter-P">P</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-PDDL-method-preconditions">PDDL method preconditions</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Enhanced-Preconditions">Enhanced Preconditions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-planning-problem">planning problem</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Planning-Problem">Planning Problem</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-plans">plans</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Plans">Plans</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Concept-Index_cp_letter-S">S</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-singleton-variables">singleton variables</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Syntax-Checks">Syntax Checks</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Sorting-in-PDDL-method-preconditions">Sorting in PDDL method preconditions</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Enhanced-Preconditions">Enhanced Preconditions</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Concept-Index_cp_symbol-1"><b>:</b></a>
