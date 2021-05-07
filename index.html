@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Copyright (C) 2019 SIFT, LLC.
+<!-- Copyright (C) 2020 SIFT, LLC.
 Original materials (C) 2002 University of Maryland.
 
 This document is made available under the Creative Commons
 Attribution-ShareAlike 4.0 International Public License -->
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>SHOP3 Manual</title>
@@ -71,6 +71,7 @@ ul.no-bullet {list-style: none}
 
 
 
+
 <span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table of Contents</h2>
 
@@ -103,7 +104,7 @@ ul.no-bullet {list-style: none}
     <ul class="no-bullet">
       <li><a id="toc-List-Terms-1" href="#List-Terms">4.3.1 List Terms</a></li>
       <li><a id="toc-Eval-Terms-1" href="#Eval-Terms">4.3.2 Eval Terms</a></li>
-      <li><a id="toc-Call_002dterms-1" href="#Call_002dterms">4.3.3 Call-terms</a></li>
+      <li><a id="toc-Call-terms" href="#Call-Terms">4.3.3 Call terms</a></li>
     </ul></li>
     <li><a id="toc-Logical-Atoms-1" href="#Logical-Atoms">4.4 Logical Atoms</a></li>
     <li><a id="toc-Logical-Expressions-1" href="#Logical-Expressions">4.5 Logical Expressions</a>
@@ -115,10 +116,10 @@ ul.no-bullet {list-style: none}
       <li><a id="toc-Universal-Quantifications-1" href="#Universal-Quantifications">4.5.5 Universal Quantifications</a></li>
       <li><a id="toc-Assignments-1" href="#Assignments">4.5.6 Assignments</a></li>
       <li><a id="toc-Eval-expressions-1" href="#Eval-expressions">4.5.7 Eval expressions</a></li>
-      <li><a id="toc-Call_002dexpressions-1" href="#Call_002dexpressions">4.5.8 Call-expressions</a></li>
-      <li><a id="toc-Enforce_002dexpressions-1" href="#Enforce_002dexpressions">4.5.9 Enforce-expressions</a></li>
-      <li><a id="toc-Setof_002dexpressions-1" href="#Setof_002dexpressions">4.5.10 Setof-expressions</a></li>
-      <li><a id="toc-Bagof_002dexpressions-1" href="#Bagof_002dexpressions">4.5.11 Bagof-expressions</a></li>
+      <li><a id="toc-Call-expressions" href="#call-expressions">4.5.8 Call expressions</a></li>
+      <li><a id="toc-Enforce-expressions-1" href="#Enforce-expressions">4.5.9 Enforce expressions</a></li>
+      <li><a id="toc-Setof-expressions-1" href="#Setof-expressions">4.5.10 Setof expressions</a></li>
+      <li><a id="toc-Bagof-expressions-1" href="#Bagof-expressions">4.5.11 Bagof expressions</a></li>
     </ul></li>
     <li><a id="toc-Logical-Precondition-1" href="#Logical-Precondition">4.6 Logical Precondition</a>
     <ul class="no-bullet">
@@ -130,14 +131,18 @@ ul.no-bullet {list-style: none}
     <li><a id="toc-Task-Lists-1" href="#Task-Lists">4.9 Task Lists</a></li>
     <li><a id="toc-Operators-1" href="#Operators">4.10 Operators</a>
     <ul class="no-bullet">
-      <li><a id="toc-Operators_003a-Legacy-Syntax" href="#Operators-Legacy-Syntax">4.10.1 Operators: Legacy Syntax</a></li>
+      <li><a id="toc-Internal-Operators-1" href="#Internal-Operators">4.10.1 Internal Operators</a></li>
+      <li><a id="toc-Operators-must-be-deterministic-1" href="#Operators-must-be-deterministic">4.10.2 Operators must be deterministic</a></li>
+      <li><a id="toc-Protection-conditions-1" href="#Protection-conditions">4.10.3 Protection conditions</a></li>
+      <li><a id="toc-Operators_003a-Legacy-Syntax" href="#Operators-Legacy-Syntax">4.10.4 Operators: Legacy Syntax</a></li>
     </ul></li>
     <li><a id="toc-Methods-1" href="#Methods">4.11 Methods</a></li>
     <li><a id="toc-Planning-Domain-1" href="#Planning-Domain">4.12 Planning Domain</a>
     <ul class="no-bullet">
       <li><a id="toc-Simple-Form-1" href="#Simple-Form">4.12.1 Simple Form</a></li>
       <li><a id="toc-Extended-form-1" href="#Extended-form">4.12.2 Extended form</a></li>
-      <li><a id="toc-Inclusion-directives-1" href="#Inclusion-directives">4.12.3 Inclusion directives</a></li>
+      <li><a id="toc-The-_002adomain_002a-variable" href="#The-domain-variable">4.12.3 The <code>*domain*</code> variable</a></li>
+      <li><a id="toc-Inclusion-directives-1" href="#Inclusion-directives">4.12.4 Inclusion directives</a></li>
     </ul></li>
     <li><a id="toc-Planning-Problem-1" href="#Planning-Problem">4.13 Planning Problem</a></li>
     <li><a id="toc-Planning-Problem-Set-1" href="#Planning-Problem-Set">4.14 Planning Problem Set</a></li>
@@ -145,42 +150,45 @@ ul.no-bullet {list-style: none}
   </ul></li>
   <li><a id="toc-PDDL-Support-1" href="#PDDL-Support">5 PDDL Support</a>
   <ul class="no-bullet">
-    <li><a id="toc-PDDL-Methods-1" href="#PDDL-Methods">5.1 PDDL Methods</a>
+    <li><a id="toc-PDDL-Metric-Fluents-1" href="#PDDL-Metric-Fluents">5.1 PDDL Metric Fluents</a>
     <ul class="no-bullet">
-      <li><a id="toc-Enhanced-Preconditions-1" href="#Enhanced-Preconditions">5.1.1 Enhanced Preconditions</a></li>
-      <li><a id="toc-PDDL-Domain-Classes-1" href="#PDDL-Domain-Classes">5.1.2 PDDL Domain Classes</a></li>
+      <li><a id="toc-Implementation-Notes" href="#Implementation-Notes">5.1.1 Implementation Notes</a></li>
     </ul></li>
+    <li><a id="toc-PDDL-Methods-1" href="#PDDL-Methods">5.2 PDDL Methods</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Enhanced-Preconditions-1" href="#Enhanced-Preconditions">5.2.1 Enhanced Preconditions</a></li>
+    </ul></li>
+    <li><a id="toc-PDDL-Domain-Classes-1" href="#PDDL-Domain-Classes">5.3 PDDL Domain Classes</a></li>
   </ul></li>
   <li><a id="toc-The-SHOP-Theorem-Prover-1" href="#The-SHOP-Theorem-Prover">6 The SHOP Theorem Prover</a></li>
   <li><a id="toc-The-SHOP-Unifier-1" href="#The-SHOP-Unifier">7 The SHOP Unifier</a></li>
   <li><a id="toc-Plan-Grapher-1" href="#Plan-Grapher">8 Plan Grapher</a></li>
-  <li><a id="toc-Internal-Technical-Information-1" href="#Internal-Technical-Information">9 Internal Technical Information</a>
+  <li><a id="toc-Data-Structures-1" href="#Data-Structures">9 Data Structures</a>
   <ul class="no-bullet">
-    <li><a id="toc-Internal-Knowledge-Structures-1" href="#Internal-Knowledge-Structures">9.1 Internal Knowledge Structures</a>
-    <ul class="no-bullet">
-      <li><a id="toc-Substitutions-1" href="#Substitutions">9.1.1 Substitutions</a></li>
-      <li><a id="toc-States-and-Satisfiers-1" href="#States-and-Satisfiers">9.1.2 States and Satisfiers</a></li>
-    </ul></li>
-    <li><a id="toc-Formal-Semantics-1" href="#Formal-Semantics">9.2 Formal Semantics</a>
-    <ul class="no-bullet">
-      <li><a id="toc-Semantics-of-Operators-1" href="#Semantics-of-Operators">9.2.1 Semantics of Operators</a></li>
-      <li><a id="toc-Semantics-of-Methods-1" href="#Semantics-of-Methods">9.2.2 Semantics of Methods</a></li>
-      <li><a id="toc-Semantics-of-Plans-1" href="#Semantics-of-Plans">9.2.3 Semantics of Plans</a></li>
-    </ul></li>
-    <li><a id="toc-Key-Functions-in-SHOP3-1" href="#Key-Functions-in-SHOP3">9.3 Key Functions in <small>SHOP3</small></a></li>
+    <li><a id="toc-States-1" href="#States">9.1 States</a></li>
   </ul></li>
-  <li><a id="toc-Differences-between-SHOP-1_002ex_002c-SHOP2-and-SHOP3" href="#Version-Differences">10 Differences between SHOP 1.x, SHOP2 and <small>SHOP3</small></a>
+  <li><a id="toc-Internal-Technical-Information-1" href="#Internal-Technical-Information">10 Internal Technical Information</a>
   <ul class="no-bullet">
-    <li><a id="toc-SHOP-1_002ex-Syntax-Comparison" href="#SHOP-1x-Syntax-Comparison">10.1 SHOP 1.x Syntax Comparison</a></li>
-    <li><a id="toc-SHOP-1_002ex-Functionality-Comparison" href="#SHOP-1x-Functionality-Comparison">10.2 SHOP 1.x Functionality Comparison</a></li>
+    <li><a id="toc-Internal-Knowledge-Structures-1" href="#Internal-Knowledge-Structures">10.1 Internal Knowledge Structures</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Substitutions-1" href="#Substitutions">10.1.1 Substitutions</a></li>
+      <li><a id="toc-States-and-Satisfiers-1" href="#States-and-Satisfiers">10.1.2 States and Satisfiers</a></li>
+    </ul></li>
+    <li><a id="toc-Formal-Semantics-1" href="#Formal-Semantics">10.2 Formal Semantics</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Semantics-of-Operators-1" href="#Semantics-of-Operators">10.2.1 Semantics of Operators</a></li>
+      <li><a id="toc-Semantics-of-Methods-1" href="#Semantics-of-Methods">10.2.2 Semantics of Methods</a></li>
+      <li><a id="toc-Semantics-of-Plans-1" href="#Semantics-of-Plans">10.2.3 Semantics of Plans</a></li>
+    </ul></li>
+    <li><a id="toc-Key-Functions-in-SHOP3-1" href="#Key-Functions-in-SHOP3">10.3 Key Functions in <small>SHOP3</small></a></li>
   </ul></li>
   <li><a id="toc-General-Notes-on-SHOP3-1" href="#General-Notes-on-SHOP3">11 General Notes on <small>SHOP3</small></a></li>
   <li><a id="toc-Acknowledgments-1" href="#Acknowledgments">12 Acknowledgments</a></li>
   <li><a id="toc-References-1" href="#References">13 References</a></li>
-  <li><a id="toc-Function-and-Macro-Index" href="#Function-Index">Function and Macro Index</a></li>
-  <li><a id="toc-Type-and-Class-Index-1" href="#Type-and-Class-Index">Type and Class Index</a></li>
-  <li><a id="toc-Variable-Index-1" href="#Variable-Index">Variable Index</a></li>
-  <li><a id="toc-Concept-Index-1" href="#Concept-Index">Concept Index</a></li>
+  <li><a id="toc-Function-and-Macro-Index" href="#Function-Index" rel="index">Function and Macro Index</a></li>
+  <li><a id="toc-Type-and-Class-Index-1" href="#Type-and-Class-Index" rel="index">Type and Class Index</a></li>
+  <li><a id="toc-Variable-Index-1" href="#Variable-Index" rel="index">Variable Index</a></li>
+  <li><a id="toc-Concept-Index-1" href="#Concept-Index" rel="index">Concept Index</a></li>
   <li><a id="toc-Colophon-1" href="#Colophon">Colophon</a></li>
 </ul>
 </div>
@@ -228,9 +236,9 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a>, Previou
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Plan-Grapher" accesskey="8">Plan Grapher</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Internal-Technical-Information" accesskey="9">Internal Technical Information</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Data-Structures" accesskey="9">Data Structures</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Version-Differences">Differences between SHOP 1x, SHOP2, and SHOP3</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Internal-Technical-Information">Internal Technical Information</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#General-Notes-on-SHOP3">General Notes on <small>SHOP3</small></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -238,13 +246,13 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a>, Previou
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#References">References</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Function-Index">Function Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Function-Index" rel="index">Function Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Type-and-Class-Index">Type and Class Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Type-and-Class-Index" rel="index">Type and Class Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Variable-Index">Variable Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Variable-Index" rel="index">Variable Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Concept-Index">Concept Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Concept-Index" rel="index">Concept Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Colophon">Colophon</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -281,10 +289,10 @@ as will be seen in this manual, many additional functions are offered.
 planning system based on <strong>ordered task decomposition</strong>, a modified
 version of Hierarchical Task Network (HTN) planning that involves planning for tasks in the same
 order that they will later be executed. An HTN, or <em>decomposition,</em>
-planner âproceeds by decomposing <em>nonprimitive tasks</em> recursively
+planner &ldquo;proceeds by decomposing <em>nonprimitive tasks</em> recursively
 into smaller and smaller subtasks, until <em>primitive tasks</em> are
 reached that can be performed directly using the planning
-operators.â<a id="DOCF1" href="#FOOT1"><sup>1</sup></a> This
+operators.&rdquo;<a id="DOCF1" href="#FOOT1"><sup>1</sup></a> This
 manual does not give an introduction to HTN planning or AI planning in
 general, for that we recommend the above-cited textbook by Ghallab,
 <em>et al.,</em> and/or the research papers describing <small>SHOP3</small>.
@@ -292,7 +300,7 @@ general, for that we recommend the above-cited textbook by Ghallab,
 <p><small>SHOP</small> and <small>SHOP 2</small> were originally developed at the Computer
 Science Department of the University of Maryland, College Park, by
 Prof. Dana Nau&rsquo;s research group.  This manual draws heavily on material
-from the manual for <small>SHOP 2</small>, which was, in turn based, in part, on the JSHOP documentation written by FÃ¼sun
+from the manual for <small>SHOP 2</small>, which was, in turn based, in part, on the JSHOP documentation written by Füsun
 Yaman, with additional material from Yue Cao&rsquo;s December 2000 draft of
 the <small>SHOP 2</small>  documentation and pseudocode from [Nau <em>et al</em>.,
 2001].  Some updates to the <small>SHOP 2</small> manual were made by Robert
@@ -301,7 +309,7 @@ P. Goldman and John Maraist, of SIFT.
 <p><small>SHOP3</small> contains two important subsystems that perform useful
 functions as part of <small>SHOP3</small>, but that can be used on their own.
 The first is the <em>unifier</em>, which computes the most general unifier
-of two logical formulas, encoded as lisp s-expressions.
+of two logical formulas, encoded as Lisp s-expressions.
 The second subsystem is the <em>theorem-prover</em>, which performs
 Prolog-style rule-based Horn clause deduction over state sequences.
 </p>
@@ -406,6 +414,7 @@ To enable it you may have to
 Next: <a href="#The-SHOP3-Formalism" accesskey="n" rel="next">The SHOP3 Formalism</a>, Previous: <a href="#Execution-Environment" accesskey="p" rel="prev">Execution Environment</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Running-SHOP3-1"></span><h2 class="chapter">3 Running <small>SHOP3</small></h2>
+
 <p>The latest version of <small>SHOP3</small> is loaded by using the ASDF system
 definition facility. The first of the following subsections explains how
 to use ASDF to load <small>SHOP3</small>. Note that previous methods of starting <small>SHOP3</small>,
@@ -442,7 +451,7 @@ some hook routines that can be used to customize the behavior of <small>SHOP3</s
 Next: <a href="#Executing-the-Planner" accesskey="n" rel="next">Executing the Planner</a>, Previous: <a href="#Running-SHOP3" accesskey="p" rel="prev">Running SHOP3</a>, Up: <a href="#Running-SHOP3" accesskey="u" rel="up">Running SHOP3</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Loading-the-Planner-1"></span><h3 class="section">3.1 Loading the Planner</h3>
-<span id="g_t_0023loading_002dthe_002dplanner"></span><p>The <small>SHOP3</small> planner should be loaded into your lisp environment using
+<span id="g_t_0023loading_002dthe_002dplanner"></span><p>The <small>SHOP3</small> planner should be loaded into your Lisp environment using
 ASDF. Assuming that ASDF is properly installed, and the <small>SHOP3</small>.asd system
 definition file can be found by ASDF,, the following command should get
 the system loaded:
@@ -518,17 +527,18 @@ the plans.
 <dt><em><code>:id-first</code>   <code>-</code> iterative deepening search, returning the first plan.</em></dt>
 <dt><em><code>:id-all</code>     <code>-</code> iterative deepening search for all shallowest plans.</em></dt>
 <dt><em><code>:random</code>     <code>-</code> Randomized search.  Used by Monroe. Not for normal</em></dt>
-<dd><p>SHOP2 domains, since normal SHOP2 domains have order-
+<dd><p>SHOP3 domains, since normal SHOP3 domains have order-
                       dependent semantics.
 </p></dd>
 </dl>
 
-
+<p><code>:mcts</code>       <code>-</code> Monte Carlo Tree Search mode (experimental and unstable).
+</p>
 <dl compact="compact">
-<dt><em><code>:verbose</code> says how much information to print about the plans SHOP2</em></dt>
+<dt><em><code>:verbose</code> says how much information to print about the plans SHOP3</em></dt>
 <dd><p>finds.  Its values can be any of the following:
         0 or <code>nil</code>    <code>-</code> print nothing
-        1 or <code>:stats</code> <code>-</code> print some statistics on SHOP2&rsquo;s operation
+        1 or <code>:stats</code> <code>-</code> print some statistics on SHOP3&rsquo;s operation
         2 or <code>:plans</code> <code>-</code> print the stats and print all plans found, but omit
              operator costs and omit all operators whose names start with &quot;!!&quot;
         3 or <code>:long-plans</code> <code>-</code> print the stats and plans, including all operator
@@ -567,7 +577,7 @@ Next: <a href="#do_002dproblems" accesskey="n" rel="next">do-problems</a>, Previ
 
 <span id="index-find_002dplans_002dstack"></span>
 <span id="Function-find_002dplans_002dstack"></span><dl>
-<dt id="index-find_002dplans_002dstack-1">Function: <strong>find-plans-stack</strong> <em>problem &amp;key domain verbose plan-tree gc no-dependencies repairable rationale out-stream which</em></dt>
+<dt id="index-find_002dplans_002dstack-1">Function: <strong>find-plans-stack</strong> <em>problem &amp;key domain verbose plan-tree gc no-dependencies repairable rationale state-type out-stream which</em></dt>
 <dd><p>Top level search function for explicit-state search in SHOP3.
 Does not support the full range of options supported by SHOP3: only
 supports finding the first solution to <code>problem</code>.  To comply with SHOP3,
@@ -630,7 +640,7 @@ least-cost plan</td></tr>
 <p>The <em>iterative deepening</em> options, <code>:id-all</code> and <code>:id-first</code>, are equivalent to taking a modified
 version of <code>find-plans</code>
  that backtracks each time it reaches depth
-<em>d</em>, and calling it repeatedly with <em>d</em> = 1, 2, ..., until a
+<em>d</em>, and calling it repeatedly with <em>d</em> = 1, 2, &hellip;, until a
 plan is found.
 </p>
 </li><li> <var>verbose</var> says what information to print out, as shown in the
@@ -839,11 +849,11 @@ seek-plans).
 methods, axioms, operators, tasks, goals and protections.
 </li></ul>
 
-</li><li> <code>(shop-trace <em>item1 item2</em> ...)</code>
+</li><li> <code>(shop-trace <em>item1 item2</em> &hellip;)</code>
  will do the same for a list of items
 </li><li> <code>(shop-trace)</code> will print a list of what&rsquo;s currently being traced
 </li><li> <code>(shop-untrace <em>item</em>)</code> will turn off tracing for an item
-</li><li> <code>(shop-untrace <em>item1 item2</em> ...)</code> will turn off tracing for a list
+</li><li> <code>(shop-untrace <em>item1 item2</em> &hellip;)</code> will turn off tracing for a list
 of items
 </li><li> <code>(shop-untrace)</code> will turn off tracing for all items
 </li></ul>
@@ -934,6 +944,7 @@ of other methods for debugging purposes. For example,
       (:task !do ?x))))
 </pre></div>
 
+<span id="index-_002abreak_002don_002dbacktrack_002a-1"></span>
 <p>There is now a new variable, <var>*break-on-backtrack*</var>, that will cause the
 Lisp environment to throw into a break loop when <small>SHOP3</small> backtracks.
 </p>
@@ -947,7 +958,7 @@ Next: <a href="#Debugging-Suggestions" accesskey="n" rel="next">Debugging Sugges
 <span id="index-singleton-variables"></span>
 <span id="index-anonymous-variables"></span>
 
-<p>We have adopted for <small>SHOP3</small> the âsingleton variableâ check common in
+<p>We have adopted for <small>SHOP3</small> the “singleton variable” check common in
 Prolog implementations. Logic variables are used to express unification
 constraints on expressions. In practice, a singleton logical variable in
 a <small>SHOP3</small> expression (a method, operator, or axiom definition) is often a
@@ -1031,7 +1042,7 @@ satisfies such an expression, it will first invoke external-access-hook
 to satisfy the expression; if that routine is undefined or returns nil,
 <small>SHOP3</small> will then try to satisfy the expression using its internal
 knowledge state. The argument to external-access-hook is a list of the
-form <code>'(and (<var>pred</var> <var>val</var> <var>val</var>)...)</code>. It returns a list of responses,
+form <code>'(and (<var>pred</var> <var>val</var> <var>val</var>)&hellip;)</code>. It returns a list of responses,
 each of which is a list of two elements: an attribution and a list of
 bindings for the unbound variables in the query. The attribution is
 stored for use with the <em>explanation</em> option for the planning
@@ -1130,17 +1141,17 @@ the following conventions:
 </p>
 <ul>
 <li> a <strong>variable symbol</strong> can be any Lisp symbol whose name begins with
-a question mark (such as ?x or ?hello-there)
+a question mark (such as <code>?x</code> or <code>?hello-there</code>)
 
 </li><li> an <strong>anonymous variable symbol</strong> can be any variable symbol with an
 underscore immediately following the question mark in its name (such as
-?_ or ?_airplane). These variables will unify with any value, and need
-not co-refer (i.e., two copies of ?_ in a single term need not unify
+<code>?_</code> or <code>?_airplane</code>). These variables will unify with any value, and need
+not co-refer (i.e., two copies of <code>?_</code> in a single term need not unify
 with each other). These variables will also not trip the singleton
 variable check.
 
 </li><li> a <strong>primitive task symbol</strong> can be any Lisp symbol whose name
-begins with an exclamation point (such as !unstack or !putdown)
+begins with an exclamation point (such as <code>!unstack</code> or <code>!putdown</code>)
 
 </li><li> a <strong>constant</strong> <strong>symbol</strong>, a <strong>function symbol</strong>, a
 <strong>predicate symbol</strong>, or a <strong>compound task symbol</strong> can be any
@@ -1158,22 +1169,25 @@ exclamation point
 Next: <a href="#Terms" accesskey="n" rel="next">Terms</a>, Previous: <a href="#Symbols" accesskey="p" rel="prev">Symbols</a>, Up: <a href="#The-SHOP3-Formalism" accesskey="u" rel="up">The SHOP3 Formalism</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="General-Lisp-Expressions-1"></span><h3 class="section">4.2 General Lisp Expressions</h3>
-<span id="g_t_0023general_002dlisp_002dexpressions"></span><p>A number of <small>SHOP3</small> domain structures described in this section use
-<strong>general Lisp expressions</strong>. These are arbitrary pieces of Lisp
-code which can include functions, macros, special macro symbols (e.g.,
-backquote), etc. When <small>SHOP3</small> needs to get the value of a general Lisp
-expression, it first substitutes values for any variable symbols in the
-expression that are bound. Then it sends the entire expression into the
-Lisp evaluator to get a final value.
+<span id="g_t_0023general_002dlisp_002dexpressions"></span>
+<p>A number of <small>SHOP3</small> domain
+structures described in this section, (e.g. <a href="#Assignments">Assignments</a>,
+<a href="#Sorted-Precondition">Sorted Precondition</a>, <a href="#Eval-Terms">Eval Terms</a>, and <a href="#Call-Terms">Call Terms</a>) use <strong>general
+Lisp expressions</strong>.  These are arbitrary pieces of Lisp code which can
+include functions, macros, special macro symbols (e.g., backquote),
+etc. When <small>SHOP3</small> needs to get the value of a general Lisp
+expression, it first substitutes values for any variable symbols in
+the expression that are bound. Then it submits the entire expression
+to the Lisp environment to get its value.
 </p>
 <p><strong>Note:</strong> Counter-intuitive bugs may arise when symbols are passed
-to lisp for evaluation (either as constants or as the values of
-variables). Remember that the lisp evaluator will assume that these are
+to Lisp for evaluation (either as constants or as the values of
+variables). Remember that the Lisp evaluator will assume that these are
 variables! If you wish them to be treated as symbols, you will need to
 quote them. This leads to a slightly undesirable oddity &mdash; variables
 that will be bound to, for example, numbers, can appear normally.
-Variables that will be bound to symbols will have to be quoted. See the
-discussion of Eval terms, below (Section 4.3.2).
+Variables that will be bound to symbols will have to be
+quoted. See <a href="#Eval-Terms">eval terms</a>.
 </p>
 <hr>
 <span id="Terms"></span><div class="header">
@@ -1190,11 +1204,11 @@ Next: <a href="#Logical-Atoms" accesskey="n" rel="next">Logical Atoms</a>, Previ
 
 </li><li> a number
 
-</li><li> a <strong>list-term</strong>
+</li><li> a <strong>list term</strong>
 
-</li><li> an <strong>eval-term</strong>
+</li><li> an <strong>eval term</strong>
 
-</li><li> a <strong>call-term</strong>
+</li><li> a <strong>call term</strong>
 
 </li></ul>
 
@@ -1203,7 +1217,7 @@ Next: <a href="#Logical-Atoms" accesskey="n" rel="next">Logical Atoms</a>, Previ
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Eval-Terms" accesskey="2">Eval Terms</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Call_002dterms" accesskey="3">Call-terms</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Call-Terms" accesskey="3">Call Terms</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -1213,30 +1227,31 @@ Next: <a href="#Logical-Atoms" accesskey="n" rel="next">Logical Atoms</a>, Previ
 Next: <a href="#Eval-Terms" accesskey="n" rel="next">Eval Terms</a>, Previous: <a href="#Terms" accesskey="p" rel="prev">Terms</a>, Up: <a href="#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="List-Terms-1"></span><h4 class="subsection">4.3.1 List Terms</h4>
-<span id="g_t_0023list_002dterms"></span><p>A <strong>list-term</strong> is a term having the form
+<span id="g_t_0023list_002dterms"></span><p>A <strong>list term</strong> is a term having the form
 </p>
 <div class="lisp">
-<pre class="lisp">([list] <em>t<sub>1</sub></em> <em>t<sub>2</sub></em> ... <em>t<sub>n</sub> [. l]</em>)
+<pre class="lisp">([<var>list</var>] <var>t<sub>1</sub></var> <var>t<sub>2</sub></var> &hellip; <var>t<sub>n</sub> [. <var>l</var>]</var>)
 </pre></div>
-<p>where <em>list</em> is an optional reserved word and each <em>t<sub>i</sub></em>
-is a term. This specifies that <em>t<sub>1</sub></em> <em>t<sub>2</sub></em> ...
-<em>t<sub>n </sub></em>are the items of a list. If the final, optional element
-is included, the item <em>l</em> should evaluate to a list; all items in
-<em>l</em> are included in the list after <em>t<sub>1</sub></em> through
-<em>t<sub>n</sub></em>.
+
+<p>where <var>list</var> is an optional reserved word and each <var>t<sub>i</sub></var>
+is a term. This specifies that <var>t<sub>1</sub></var> <var>t<sub>2</sub></var> &hellip;
+<var>t<sub>n</sub></var> are the items of a list. If the final, optional element
+is included, the item <var>l</var> should evaluate to a list; all items in
+<var>l</var> are included in the list after <var>t<sub>1</sub></var> through
+<var>t<sub>n</sub></var>.
 </p>
 <hr>
 <span id="Eval-Terms"></span><div class="header">
 <p>
-Next: <a href="#Call_002dterms" accesskey="n" rel="next">Call-terms</a>, Previous: <a href="#List-Terms" accesskey="p" rel="prev">List Terms</a>, Up: <a href="#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Call-Terms" accesskey="n" rel="next">Call Terms</a>, Previous: <a href="#List-Terms" accesskey="p" rel="prev">List Terms</a>, Up: <a href="#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Eval-Terms-1"></span><h4 class="subsection">4.3.2 Eval Terms</h4>
-<span id="g_t_0023eval_002dterms"></span><p>An <strong>eval-term</strong> is an expression of the form
+<span id="g_t_0023eval_002dterms"></span><p>An <strong>eval term</strong> is an expression of the form
 </p>
 <div class="lisp">
 <pre class="lisp">(eval <em>general</em>-<em>lisp-expression</em>)
 </pre></div>
-<p>The value associated with an eval-term is determined as follows. First,
+<p>The value associated with an eval term is determined as follows. First,
 any variable symbols which appear in <em>lisp-expression</em> and are
 bound are replaced by the values that they are bound to. Then, the
 entire expression is evaluated in Lisp. For example, if the variable
@@ -1246,7 +1261,10 @@ symbol ?foo is bound to the value 3 then the term:
 <pre class="lisp">(eval (mapcar #'(lambda (x) (+ x ?foo)) `(1 2 ,(* ?foo ?foo))))
 </pre></div>
 
-<p>will have as its value a list containing the numbers 4, 5, and 12. Note
+<p>will have as its value a list containing the numbers 4, 5, and 12. 
+</p>
+<span id="index-quoting-in-call-and-eval-terms"></span>
+<p>Note
 that variable substitutions in eval terms are handled before any
 evaluation of the expression, as in Lisp macros. One implication of this
 fact is that variables with symbolic values must be explicitly quoted if
@@ -1264,37 +1282,38 @@ they are to be treated as Lisp symbols. For example, if the variable
 <pre class="lisp">(eval (list ?foo 'BAZ))
 </pre></div>
 
-<p>it would cause a Lisp error when lisp attempts to find the value of <code>BAR</code>,
+<p>it would cause a Lisp error when Lisp attempts to find the value of <code>BAR</code>,
 which it would believe to be a variable.
 </p>
 <hr>
-<span id="Call_002dterms"></span><div class="header">
+<span id="Call-Terms"></span><div class="header">
 <p>
 Previous: <a href="#Eval-Terms" accesskey="p" rel="prev">Eval Terms</a>, Up: <a href="#Terms" accesskey="u" rel="up">Terms</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Call_002dterms-1"></span><h4 class="subsection">4.3.3 Call-terms</h4>
-<span id="g_t_0023call_002dterms"></span><p>A <strong>call-term</strong> is an expression of the form
+<span id="Call-terms"></span><h4 class="subsection">4.3.3 Call terms</h4>
+<span id="g_t_0023call_002dterms"></span><p>A <strong>call term</strong> is an expression of the form
 </p>
 <div class="lisp">
-<pre class="lisp">(call f <em>t<sub>1</sub></em> <em>t<sub>2</sub></em> ... <em>t<sub>n</sub></em>)
+<pre class="lisp">(call f <var>t<sub>1</sub></var> <var>t<sub>2</sub></var> &hellip; <var>t<sub>n</sub></var>)
 </pre></div>
-<p>where <em>f</em> is a function symbol and each <em>t<sub>i</sub></em> is a term
-or a call-term. A call-term has a special meaning to <small>SHOP3</small>, because it
-tells <small>SHOP3</small> that <em>f</em> is an attached procedure, i.e., that whenever
+<p>where <var>f</var> is a function symbol and each <var>t<sub>i</sub></var> is a term
+or a call term. A call term has a special meaning to <small>SHOP3</small>, because it
+tells <small>SHOP3</small> that <var>f</var> is an attached procedure, i.e., that whenever
 <small>SHOP3</small> needs to evaluate a precondition or task list that contains a
-call-term, <small>SHOP3</small> should replace the call term with the result of
-applying the function <em>f</em> on the arguments <em>t<sub>1</sub>,
-t<sub>2</sub>, &hellip;, t<sub>n</sub></em>. (We later will define what preconditions
-and task lists are).
+call term, <small>SHOP3</small> should replace the call term with the result of
+applying the function <var>f</var> on the arguments <var>t<sub>1</sub>,
+t<sub>2</sub>, &hellip;, t<sub>n</sub></var>. 
+We later will define preconditions (see <a href="#Logical-Precondition">preconditions</a>) and task
+lists (see <a href="#Task-Lists">Task Lists</a>).
 </p>
-<p>For example, the following call-term would have the value 6:
+<p>For example, the following call term would have the value 6:
 </p>
 <div class="lisp">
 <pre class="lisp">(call + (call + 1 2) 3)
 </pre></div>
-<p>Note that a call-term is not as expressive as an eval-term. In
+<p>Note that a call term is not as expressive as an eval term. In
 particular, it does not support the evaluation of Lisp macros (including
-macro characters such as backquote). Both call and eval are supported in
+macro characters such as backquote). Both <code>call</code> and <code>eval</code> are supported in
 <small>SHOP3</small> because the former is compatible with JSHOP 1.0 and the latter is
 compatible with SHOP 1.x. <small>SHOP3</small> users who are not interested in either
 form of compatibility may use either form.
@@ -1308,10 +1327,10 @@ Next: <a href="#Logical-Expressions" accesskey="n" rel="next">Logical Expression
 <span id="g_t_0023logical_002datoms"></span><p>A <strong>logical atom</strong> has the form:
 </p>
 <div class="lisp">
-<pre class="lisp">(<em>p</em> <em>t<sub>1</sub></em> <em>t<sub>2</sub></em> ... <em>t<sub>n</sub></em>)
+<pre class="lisp">(<var>p</var> <var>t<sub>1</sub></var> <var>t<sub>2</sub></var> &hellip; <var>t<sub>n</sub></var>)
 </pre></div>
-<p>where <em>p</em> is a predicate symbol and each <em>t<sub>i </sub></em> is a term
-other than an eval- or call-term.
+<p>where <var>p</var> is a predicate symbol and each <var>t<sub>i</sub></var> is a term
+other than an eval or call term.
 </p>
 <hr>
 <span id="Logical-Expressions"></span><div class="header">
@@ -1339,13 +1358,13 @@ quantifications</strong>, <strong>assignments</strong>, <strong>eval expressions
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Eval-expressions" accesskey="7">Eval expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Call_002dexpressions" accesskey="8">Call-expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#call-expressions" accesskey="8">call expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Enforce_002dexpressions" accesskey="9">Enforce-expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Enforce-expressions" accesskey="9">Enforce expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Setof_002dexpressions">Setof-expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Setof-expressions">Setof expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Bagof_002dexpressions">Bagof-expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Bagof-expressions">Bagof expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -1358,11 +1377,20 @@ Next: <a href="#Disjuncts" accesskey="n" rel="next">Disjuncts</a>, Previous: <a 
 <span id="g_t_0023conjuncts"></span><p>A <strong>conjunct</strong> has the form
 </p>
 <div class="lisp">
-<pre class="lisp">([and]<em>l<sub>1</sub></em> <em>l<sub>2</sub></em> ... <em>l<sub>n</sub></em>)
+<pre class="lisp">([and]<em>l<sub>1</sub></em> <em>l<sub>2</sub></em> &hellip; <em>l<sub>n</sub></em>)
 </pre></div>
-<p>where each <em>l<sub>i </sub></em> is a logical expression. Note that if there
+
+<p>where each <em>l<sub>i </sub></em> is a logical expression. 
+</p>
+<p>Note that if there
 are 0 conjuncts (e.g., the expression is ()) then the form always
 evaluates to true.
+</p>
+<span id="index-implicit-conjunction"></span>
+<p>Also note that <em>implicit conjunction</em> (list of logical expressions
+without an explicit <code>and</code>) is <strong>deprecated</strong>, and will
+eventually be removed, as it significantly complicates <small>SHOP3</small>&rsquo;s
+parsing &ndash; and reading <small>SHOP3</small> code by humans.
 </p>
 <hr>
 <span id="Disjuncts"></span><div class="header">
@@ -1373,9 +1401,9 @@ Next: <a href="#Negations" accesskey="n" rel="next">Negations</a>, Previous: <a 
 <span id="g_t_0023disjuncts"></span><p>A <strong>disjunct</strong> is an expression of the form
 </p>
 <div class="lisp">
-<pre class="lisp">(or <em>l<sub>1</sub> l<sub>2</sub> ... l<sub>n</sub></em>)
+<pre class="lisp">(or <var>l<sub>1</sub></var> <var>l<sub>2</sub></var> &hellip; <var>l<sub>n</sub></var>)
 </pre></div>
-<p>where <em>l<sub>1</sub></em>, <em>l<sub>2</sub></em>,..., <em>l<sub>n</sub></em> are logical
+<p>where <var>l<sub>1</sub></var>, <var>l<sub>2</sub></var> &hellip; <var>l<sub>n</sub></var> are logical
 expressions.
 </p>
 <hr>
@@ -1403,7 +1431,7 @@ Next: <a href="#Universal-Quantifications" accesskey="n" rel="next">Universal Qu
 <pre class="lisp">(imply <em>Y Z</em>)
 </pre></div>
 <p>where <em>Y</em> and <em>Z</em> are logical expressions. The intent of an
-implication is to evaluate its logical counterpart; that is, <em>(Â¬Y â¨
+implication is to evaluate its logical counterpart; that is, <em>(¬Y ∨
 Z)</em>. Note that here, <em>Y</em> should be ground, or the semantic of the
 implication will be ambiguous.
 </p>
@@ -1455,8 +1483,33 @@ expression will bind the variable <code>?baz</code> to the list <code>(IF FISH)<
 <pre class="lisp">(assign ?baz (?foo (&lt; ?bar 3) (list '?foo 'fish) (/ 8 ?bar)))
 </pre></div>
 
-<p>Similarly, if ?foo is bound to LIST and ?bar is bound to 4 then the
-expression above will bind ?baz to the list (NIL (LIST FISH) 2).
+<p>Similarly, if <code>?foo</code> is bound to <code>LIST</code> and <code>?bar</code> is bound to <code>4</code> then the
+expression above will bind <code>?baz </code>to the list <code>(NIL (LIST
+FISH) 2)</code>.<a id="DOCF2" href="#FOOT2"><sup>2</sup></a>
+</p>
+<p><b>Note:</b> <code>assign</code> is <em>not</em> the default way to bind
+<small>SHOP3</small>&rsquo;s logical variables.  The default way to bind logical
+variables is through <em>unification</em>. <code>assign</code> is specifically for use
+when you wish to use <em>lisp code</em> to produce values you will bind
+variables to.  To that end, <code>assign</code> expects that its second
+argument will be a lisp expression and it will <em>evaluate</em> that
+expression.  It is because of this evaluation process that the following
+expression (with <code>=</code> interpreted as unification)
+</p>
+<div class="lisp">
+<pre class="lisp">(= ?x foo)
+</pre></div>
+
+<p>will bind <code>?x</code> to the symbol <code>foo</code>, but 
+</p>
+<div class="lisp">
+<pre class="lisp">(assign ?x foo)
+</pre></div>
+
+<p>will cause a run-time error.  In the second example, <small>SHOP3</small>
+will attempt to evaluate <code>foo</code> and report it as an unbound variable &ndash;
+unless this is evaluated in a context where <code>foo</code> is a variable,
+in which case <code>?x</code> will be bound to the current value of <code>foo</code>.
 </p>
 <p><small>SHOP3</small> also offers a <strong>compound assignment</strong> expression of this
 form:
@@ -1475,39 +1528,44 @@ various values of <em>e,</em> in turn.
 <hr>
 <span id="Eval-expressions"></span><div class="header">
 <p>
-Next: <a href="#Call_002dexpressions" accesskey="n" rel="next">Call-expressions</a>, Previous: <a href="#Assignments" accesskey="p" rel="prev">Assignments</a>, Up: <a href="#Logical-Expressions" accesskey="u" rel="up">Logical Expressions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#call-expressions" accesskey="n" rel="next">call expressions</a>, Previous: <a href="#Assignments" accesskey="p" rel="prev">Assignments</a>, Up: <a href="#Logical-Expressions" accesskey="u" rel="up">Logical Expressions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Eval-expressions-1"></span><h4 class="subsection">4.5.7 Eval expressions</h4>
-<span id="g_t_0023eval_002dexpressions"></span><p>An <strong>eval-expression</strong> has the same form as an
-<a href="#g_t_0023eval_002dterms">eval-term</a>, q.v. Unlike an eval-term, however, an
-eval-expression is interpreted simply as either true or false rather
+<span id="g_t_0023eval_002dexpressions"></span><p>An <strong>eval expression</strong> has the same form as an eval term
+(see <a href="#Eval-Terms">Eval Terms</a>). Unlike an eval term, however, an
+eval expression is interpreted simply as either true or false rather
 than having some value which would be used as an argument to a
-predicate. Thus eval-expression typically invoke boolean Lisp functions
-such as evenp or &gt;=.
+predicate. Thus an eval expression typically invokes boolean Lisp functions
+such as <code>evenp</code> or <code>&gt;=</code>.
+</p>
+<p>Note that if you use an eval expression for its <em>side effects</em>, you
+must be careful to ensure that it still returns a true value.
 </p>
 <hr>
-<span id="Call_002dexpressions"></span><div class="header">
+<span id="call-expressions"></span><div class="header">
 <p>
-Next: <a href="#Enforce_002dexpressions" accesskey="n" rel="next">Enforce-expressions</a>, Previous: <a href="#Eval-expressions" accesskey="p" rel="prev">Eval expressions</a>, Up: <a href="#Logical-Expressions" accesskey="u" rel="up">Logical Expressions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Enforce-expressions" accesskey="n" rel="next">Enforce expressions</a>, Previous: <a href="#Eval-expressions" accesskey="p" rel="prev">Eval expressions</a>, Up: <a href="#Logical-Expressions" accesskey="u" rel="up">Logical Expressions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Call_002dexpressions-1"></span><h4 class="subsection">4.5.8 Call-expressions</h4>
-<p>A <strong>call-expression</strong> has the same form as a
-<a href="#g_t_0023call_002dterms">call-term</a>, q.v. As with call-expressions,
-eval-expressions are interpreted as either true or false.
+<span id="Call-expressions"></span><h4 class="subsection">4.5.8 Call expressions</h4>
+<p>A <strong>call expression</strong> has the same form as a call term
+(see <a href="#Call-Terms">Call Terms</a>). As with eval expressions (see <a href="#Eval-expressions">Eval expressions</a>),
+call expressions are interpreted as either true or false, and the
+warning mentioned there about using Eval expressions for side effects
+applies to Call expressions, as well.
 </p>
 <hr>
-<span id="Enforce_002dexpressions"></span><div class="header">
+<span id="Enforce-expressions"></span><div class="header">
 <p>
-Next: <a href="#Setof_002dexpressions" accesskey="n" rel="next">Setof-expressions</a>, Previous: <a href="#Call_002dexpressions" accesskey="p" rel="prev">Call-expressions</a>, Up: <a href="#Logical-Expressions" accesskey="u" rel="up">Logical Expressions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Setof-expressions" accesskey="n" rel="next">Setof expressions</a>, Previous: <a href="#call-expressions" accesskey="p" rel="prev">call expressions</a>, Up: <a href="#Logical-Expressions" accesskey="u" rel="up">Logical Expressions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Enforce_002dexpressions-1"></span><h4 class="subsection">4.5.9 Enforce-expressions</h4>
-<span id="g_t_0023enforce_002dexpressions"></span><p>An <strong>enforce-expression</strong> has the form
+<span id="Enforce-expressions-1"></span><h4 class="subsection">4.5.9 Enforce expressions</h4>
+<span id="g_t_0023enforce_002dexpressions"></span><p>An <strong>enforce expression</strong> has the form
 </p>
 <div class="lisp">
 <pre class="lisp">(enforce <em>t<sub>1</sub></em> &amp;rest <em>error-args</em>)
 </pre></div>
 <p>Enforce expressions are for goals that should <em>always</em> be
-satisfied. SHOP&rsquo;s theorem-prover will attempt to prove <em>t</em> and if
+satisfied. SHOP&rsquo;s theorem-prover will attempt to prove <em>t<sub>1</sub></em> and if
 it fails, will call error with <em>error-args.</em> For example
 </p>
 <div class="lisp">
@@ -1515,36 +1573,52 @@ it fails, will call error with <em>error-args.</em> For example
           &quot;~A x-position undefined.&quot; (quote ?aircraft))
 </pre></div>
 
+<p>Enforce expressions are useful when debugging domains.
+</p>
 <hr>
-<span id="Setof_002dexpressions"></span><div class="header">
+<span id="Setof-expressions"></span><div class="header">
 <p>
-Next: <a href="#Bagof_002dexpressions" accesskey="n" rel="next">Bagof-expressions</a>, Previous: <a href="#Enforce_002dexpressions" accesskey="p" rel="prev">Enforce-expressions</a>, Up: <a href="#Logical-Expressions" accesskey="u" rel="up">Logical Expressions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Bagof-expressions" accesskey="n" rel="next">Bagof expressions</a>, Previous: <a href="#Enforce-expressions" accesskey="p" rel="prev">Enforce expressions</a>, Up: <a href="#Logical-Expressions" accesskey="u" rel="up">Logical Expressions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Setof_002dexpressions-1"></span><h4 class="subsection">4.5.10 Setof-expressions</h4>
-<span id="g_t_0023setof_002dexpressions"></span><p>A <strong>setof-expression</strong> has the form
+<span id="Setof-expressions-1"></span><h4 class="subsection">4.5.10 Setof expressions</h4>
+<span id="g_t_0023setof_002dexpressions"></span><p>A <strong>setof expression</strong> has the form
 </p>
 <div class="lisp">
-<pre class="lisp">(setof <em>var expr set-var</em>)
+<pre class="lisp">(setof <em>term expr set-var</em>)
 </pre></div>
 <p>Find all solutions to <em>expr,</em> and bind the <em>set of</em> values for
-<em>var</em> in <em>expr</em> to <em>set-var</em>. For example
+<em>term</em> in <em>expr</em> to <em>set-var</em>. For example
 </p>
 <div class="lisp">
 <pre class="lisp">(setof ?uav (uav ?uav) ?uavs)
 </pre></div>
 
-
 <p>will bind <code>?uavs</code> to the set of UAVs in the current state.
+</p>
+<div class="lisp">
+<pre class="lisp">(setof (pair ?uav1 ?uav2) 
+  (and (uav ?uav1) (uav ?uav2) (line-of-sight ?uav1 ?uav2))
+  ?pairs)
+</pre></div>
+
+<p>will bind <code>?pairs</code> to a set of terms, e.g., <code>((pair rotor1
+fw2) (pair rotor2 fw3))</code> indicating pairs of UAVs with line of sight
+from the first to the second.
 </p>
 <p>Note that the semantics of this operator are to fail if the <em>expr</em>
 is an unsatisfiable goal.
 </p>
+<p><b>Note:</b> Support for general terms as the first argument to
+<code>setof</code> and <code>bagof</code> (see <a href="#Bagof-expressions">Bagof expressions</a>) is new in
+version 3.4 of <small>SHOP3</small>.  Code that depends on it should use a
+corresponding version dependency qualifier in, e.g., ASDF (<code>(:version &quot;shop3&quot; &quot;3.4&quot;)</code>).
+</p>
 <hr>
-<span id="Bagof_002dexpressions"></span><div class="header">
+<span id="Bagof-expressions"></span><div class="header">
 <p>
-Previous: <a href="#Setof_002dexpressions" accesskey="p" rel="prev">Setof-expressions</a>, Up: <a href="#Logical-Expressions" accesskey="u" rel="up">Logical Expressions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="#Setof-expressions" accesskey="p" rel="prev">Setof expressions</a>, Up: <a href="#Logical-Expressions" accesskey="u" rel="up">Logical Expressions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Bagof_002dexpressions-1"></span><h4 class="subsection">4.5.11 Bagof-expressions</h4>
+<span id="Bagof-expressions-1"></span><h4 class="subsection">4.5.11 Bagof expressions</h4>
 <span id="g_t_0023bagof_002dexpressions"></span><p>The syntax for bagof is the same as for setof (Section 4.5.10), but
 binds <em>set-var</em> to a <em>bag</em> of results, which may contain
 duplicates, instead of a set.
@@ -1574,7 +1648,7 @@ Next: <a href="#Sorted-Precondition" accesskey="n" rel="next">Sorted Preconditio
 <span id="g_t_0023first_002dsatisfiers_002dprecondition"></span><p>A <strong>first satisfier precondition</strong> has the form
 </p>
 <div class="lisp">
-<pre class="lisp">(:first <em>l<sub>1</sub> l<sub>2</sub> ... l<sub>n</sub></em>)
+<pre class="lisp">(:first <em>l<sub>1</sub> l<sub>2</sub> &hellip; l<sub>n</sub></em>)
 </pre></div>
 <p>where each <em>l<sub>i </sub></em> is a logical expression. Such a precondition
 causes <small>SHOP3</small> to consider only the first set of bindings that satisfies
@@ -1623,13 +1697,13 @@ Next: <a href="#Task-Atoms" accesskey="n" rel="next">Task Atoms</a>, Previous: <
 <pre class="lisp">(:- a
     [name<sub>1</sub>] <em>E<sub>1</sub></em>
     [name<sub>2</sub>] E<sub>2</sub>
-    [name<sub>3</sub>] E<sub>3</sub> ...
+    [name<sub>3</sub>] E<sub>3</sub> &hellip;
     [name<sub>n</sub>] E<sub>n</sub>)
 </pre></div>
 <p>where the axiom&rsquo;s <strong>head</strong> is the symbol <em>a</em>, and its
 <strong>tail</strong> is the list ([<em>name<sub>1</sub></em>] <em>E<sub>1</sub></em>
 [<em>name<sub>2</sub></em>] <em>E<sub>2</sub></em> [<em>name<sub>3</sub></em>]
-<em>E<sub>3</sub></em> ... [<em>name<sub>n</sub></em>] <em>E<sub>n</sub></em>) and each
+<em>E<sub>3</sub></em> &hellip; [<em>name<sub>n</sub></em>] <em>E<sub>n</sub></em>) and each
 <em>E</em><sub>i</sub> is a logical expression and each <em>name<sub>i</sub></em> is a
 symbol called the <em>name</em> of <em>E<sub>i</sub></em>. The names of the
 expressions are optional. When a domain definition is loaded into <small>SHOP3</small>,
@@ -1641,7 +1715,7 @@ behavior.
 <p>The intended meaning of an axiom is that <em>a</em> is true if
 <em>E<sub>1</sub></em> is true, or if <em>E<sub>1</sub></em> is false but
 <em>E<sub>2</sub></em> is true, or if all of <em>E<sub>1</sub></em>, <em>E<sub>2</sub></em>,
-... , <em>E<sub>n-1</sub></em> are false but <em>E<sub>n</sub></em> is true. For
+&hellip; , <em>E<sub>n-1</sub></em> are false but <em>E<sub>n</sub></em> is true. For
 example, the following axiom says that a location is in walking distance
 if the weather is good and the location is within two miles of home, or
 if the weather is not good and the location is within one mile of home:
@@ -1662,14 +1736,14 @@ Next: <a href="#Task-Lists" accesskey="n" rel="next">Task Lists</a>, Previous: <
 <span id="g_t_0023task_002datoms"></span><p>A <strong>task atom</strong> is an expression of any of the forms
 </p>
 <div class="lisp">
-<pre class="lisp">(<em>s</em> <em>t<sub>1</sub></em> <em>t<sub>2</sub></em> ... <em>t<sub>n</sub></em>)
+<pre class="lisp">(<em>s</em> <em>t<sub>1</sub></em> <em>t<sub>2</sub></em> &hellip; <em>t<sub>n</sub></em>)
 
-(:task <em>s</em> <em>t<sub>1</sub></em> <em>t<sub>2</sub></em> ... <em>t<sub>n</sub></em>)
+(:task <em>s</em> <em>t<sub>1</sub></em> <em>t<sub>2</sub></em> &hellip; <em>t<sub>n</sub></em>)
 
-(:task :immediate <em>s</em> <em>t<sub>1</sub></em> <em>t<sub>2</sub></em> ... <em>t<sub>n</sub></em>)
+(:task :immediate <em>s</em> <em>t<sub>1</sub></em> <em>t<sub>2</sub></em> &hellip; <em>t<sub>n</sub></em>)
 </pre></div>
 <p>where <em>s</em> is a task symbol and the arguments <em>t<sub>1</sub>,
-t<sub>2</sub>, ..., t<sub>n</sub></em> are terms. The task atom is <strong>primitive</strong>
+t<sub>2</sub>, &hellip;, t<sub>n</sub></em> are terms. The task atom is <strong>primitive</strong>
 if <em>s</em> is a primitive task symbol, and it is <strong>compound</strong> if
 <em>s</em> is a compound task symbol. The first and second forms are
 called an <strong>ordinary task atom</strong>; the third form is called an
@@ -1687,12 +1761,12 @@ Next: <a href="#Operators" accesskey="n" rel="next">Operators</a>, Previous: <a 
 </p>
 <ul>
 <li> an expression of the form (:unordered <em>tasklist<sub>1</sub>
-tasklist<sub>2</sub> ... tasklist<sub>n</sub></em>), where <em>tasklist<sub>1</sub>
-tasklist<sub>2</sub> ... tasklist<sub>n</sub></em> are task lists;
+tasklist<sub>2</sub> &hellip; tasklist<sub>n</sub></em>), where <em>tasklist<sub>1</sub>
+tasklist<sub>2</sub> &hellip; tasklist<sub>n</sub></em> are task lists;
 
 </li><li> an expression of the form ([:ordered] <em>tasklist<sub>1</sub>
-tasklist<sub>2</sub> ... tasklist<sub>n</sub></em>), where <em>tasklist<sub>1</sub>
-tasklist<sub>2</sub> ... tasklist<sub>n</sub></em> are task lists.
+tasklist<sub>2</sub> &hellip; tasklist<sub>n</sub></em>), where <em>tasklist<sub>1</sub>
+tasklist<sub>2</sub> &hellip; tasklist<sub>n</sub></em> are task lists.
 
 </li><li> A task atom, see 4.8.
 
@@ -1701,14 +1775,14 @@ tasklist<sub>2</sub> ... tasklist<sub>n</sub></em> are task lists.
 <p>The :ordered keyword, which is optional, specifies that <small>SHOP3</small> must
 perform the task lists in the order that they are given.&nbsp;The :unordered
 keyword specifies that there is no particular ordering specified between
-<em>tasklist<sub>1</sub>, tasklist<sub>2</sub> ... tasklist<sub>n</sub>.&nbsp;</em> With the
+<em>tasklist<sub>1</sub>, tasklist<sub>2</sub> &hellip; tasklist<sub>n</sub>.&nbsp;</em> With the
 use of the :unordered keyword, <small>SHOP3</small> may interleave tasks between
 different task lists.&nbsp; Suppose we have two task lists as the following:
 </p>
-<p><em>T</em> = <code>(:ordered <em>t</em><sub>1</sub> <em>t</em><sub>2</sub> ...
+<p><em>T</em> = <code>(:ordered <em>t</em><sub>1</sub> <em>t</em><sub>2</sub> &hellip;
 <em>t<sub>m</sub></em>)</code>;
 </p>
-<p><em>U</em> = <code>(:ordered <em>u</em><sub>1</sub> <em>u</em><sub>2</sub> ...
+<p><em>U</em> = <code>(:ordered <em>u</em><sub>1</sub> <em>u</em><sub>2</sub> &hellip;
 <em>u<sub>n</sub></em>)</code>;
 </p>
 <p>and that we have the main task list
@@ -1741,23 +1815,10 @@ Next: <a href="#Methods" accesskey="n" rel="next">Methods</a>, Previous: <a href
 </div>
 <span id="Operators-1"></span><h3 class="section">4.10 Operators</h3>
 <span id="g_t_0023operators"></span>
-
-
-
-
-<p>The arguments marked with keywords are all optional, and may appear in
-any order. The add-list, and delete-list default to being empty. The
-preconditions default to being vacuously true, and the cost defaults to
-1.0.
-</p>
-<p><em>Note:</em> We still support <small>SHOP2</small>&rsquo;s original syntax for operators,
-described below (see <a href="#Operators-Legacy-Syntax">Operators Legacy Syntax</a>).
-</p>
 <p>An <strong>operator</strong> is description of how to perform a <em>primitive</em>
 task, which cannot be decomposed further. An operator definition has the
 following form:
 </p>
-
 <div class="lisp">
 <pre class="lisp">(:op <em>head</em>
        [:add <em>add-list</em>]
@@ -1773,7 +1834,9 @@ following form:
 a task atom with a task symbol that begins with an exclamation point)
 
 </li><li> The operator&rsquo;s
-<em>precondition</em> is a logical expression.
+<em>precondition</em> is a logical expression. This is quite general,
+recall <a href="#Logical-Expressions">Logical Expressions</a>, especially <a href="#Assignments">Assignments</a>, and
+<a href="#Eval-expressions">Eval expressions</a>.
 
 </li><li> The operator&rsquo;s
 <em>delete-list</em> is a list for which each
@@ -1784,9 +1847,9 @@ of the element may be any of following:
 
 </li><li> a protection condition (see below)
 
-</li><li> an expression of the form (forall V E L), where <em>V</em> is a list of
-variables in <em>E</em>, <em>E</em> is a logical expression, and <em>L</em> is
-a list of logical atoms
+</li><li> an expression of the form <code>(forall <var>V</var> <var>E</var> <var>L</var>)</code>, where <var>V</var> is a list of
+variables in <var>E</var>, <var>E</var> is a logical expression, and <var>L</var> is
+a list of logical atoms, See <a href="#Logical-Atoms">Logical Atoms</a>.
 
 </li></ul>
 
@@ -1799,36 +1862,24 @@ that has the same form as the delete-list.
 
 </li></ul>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Internal-Operators" accesskey="1">Internal Operators</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Operators-must-be-deterministic" accesskey="2">Operators must be deterministic</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Protection-conditions" accesskey="3">Protection conditions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Operators-Legacy-Syntax" accesskey="4">Operators Legacy Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
-<p>In the above definition, a <strong>protection condition</strong> is an
-expression of the form
-</p>
-<div class="lisp">
-<pre class="lisp">(:protection a)
-</pre></div>
+<hr>
+<span id="Internal-Operators"></span><div class="header">
+<p>
+Next: <a href="#Operators-must-be-deterministic" accesskey="n" rel="next">Operators must be deterministic</a>, Previous: <a href="#Operators" accesskey="p" rel="prev">Operators</a>, Up: <a href="#Operators" accesskey="u" rel="up">Operators</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
-
-<p>where <em>a</em> is a logical atom. The purpose of a protection condition
-in the add list is to tell <small>SHOP3</small> that it should not execute any operator
-that deletes <em>a</em>. The purpose of a protection condition in the
-delete list is to cancel a previously added protection condition. For
-example, if we drive a delivery truck to a certain location in order to
-pick up a package, then we might not want to allow the truck to be moved
-away from that location until after we have picked up the package.&nbsp; To
-represent this, we might use the following operators:
-</p>
-<div class="lisp">
-<pre class="lisp">(:op (!drive-to ?truck ?old-loc ?location)
-   :delete ((at ?truck ?old-loc))
-   :add ((at ?truck ?location)
-           (:protection (at ?truck ?location))))
-(:op (!pick-up ?truck ?package ?location)
-  :delete
-    ((at ?package ?location)
-     (:protection (at ?truck ?location)))
-   :add ((in ?package ?truck)))
-</pre></div>
-
+<span id="Internal-Operators-1"></span><h4 class="subsection">4.10.1 Internal Operators</h4>
 <span id="index-internal-operators"></span>
 <span id="g_t_0023internal_002doperators"></span><p>As noted above, the head of the operator is a primitive task atom, so it
 must begin with a primitive task symbol, i.e., a symbol that begins with
@@ -1852,6 +1903,14 @@ exists in <small>SHOP3</small> is so that automated systems which use <small>SHO
 input can easily distinguish between those operators which involve
 action and those which were merely internal to the planning process.
 </p>
+<hr>
+<span id="Operators-must-be-deterministic"></span><div class="header">
+<p>
+Next: <a href="#Protection-conditions" accesskey="n" rel="next">Protection conditions</a>, Previous: <a href="#Operators" accesskey="p" rel="prev">Operators</a>, Up: <a href="#Operators" accesskey="u" rel="up">Operators</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Operators-must-be-deterministic-1"></span><h4 class="subsection">4.10.2 Operators must be deterministic</h4>
+<span id="index-Operators_002c-deterministic"></span>
+
 <p>When designing an operator, it is important to ensure that each variable
 symbol in the add list, delete list, and cost always be bound to a
 single value when the operator is invoked. Variable symbols can be bound
@@ -1868,22 +1927,55 @@ However, <small>SHOP3</small> will be able to correctly process operators that h
 multiple unifiers for preconditions as long as no two unifiers can
 provide different values for a variable that appears in the add list,
 delete list, or cost.
-</p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Operators-Legacy-Syntax" accesskey="1">Operators Legacy Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
+</p>
+<hr>
+<span id="Protection-conditions"></span><div class="header">
+<p>
+Next: <a href="#Operators-Legacy-Syntax" accesskey="n" rel="next">Operators Legacy Syntax</a>, Previous: <a href="#Operators-must-be-deterministic" accesskey="p" rel="prev">Operators must be deterministic</a>, Up: <a href="#Operators" accesskey="u" rel="up">Operators</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Protection-conditions-1"></span><h4 class="subsection">4.10.3 Protection conditions</h4>
+<span id="index-protections"></span>
+
+<p>In the definition of operators, a <strong>protection condition</strong> is an
+expression of the form
+</p>
+<div class="lisp">
+<pre class="lisp">(:protection a)
+</pre></div>
+
+<p>where <em>a</em> is a logical atom. The purpose of a protection condition
+in the add list is to tell <small>SHOP3</small> that it should not execute any operator
+that deletes <em>a</em>. The purpose of a protection condition in the
+delete list is to cancel a previously added protection condition. For
+example, if we drive a delivery truck to a certain location in order to
+pick up a package, then we might not want to allow the truck to be moved
+away from that location until after we have picked up the package.&nbsp; To
+represent this, we might use the following operators:
+</p>
+<div class="lisp">
+<pre class="lisp">(:op (!drive-to ?truck ?old-loc ?location)
+   :delete ((at ?truck ?old-loc))
+   :add ((at ?truck ?location)
+           (:protection (at ?truck ?location))))
+(:op (!pick-up ?truck ?package ?location)
+  :delete
+    ((at ?package ?location)
+     (:protection (at ?truck ?location)))
+   :add ((in ?package ?truck)))
+</pre></div>
+
 
 <hr>
 <span id="Operators-Legacy-Syntax"></span><div class="header">
 <p>
-Previous: <a href="#Operators" accesskey="p" rel="prev">Operators</a>, Up: <a href="#Operators" accesskey="u" rel="up">Operators</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="#Protection-conditions" accesskey="p" rel="prev">Protection conditions</a>, Up: <a href="#Operators" accesskey="u" rel="up">Operators</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Operators_003a-Legacy-Syntax"></span><h4 class="subsection">4.10.1 Operators: Legacy Syntax</h4>
+<span id="Operators_003a-Legacy-Syntax"></span><h4 class="subsection">4.10.4 Operators: Legacy Syntax</h4>
 
 <p>In our work with <small>SHOP2</small>, we found that operator definitions in its
 original syntax were prone to
 hard-to-detect syntax errors and typos that can give rise to difficult to identify
-âgarbage in/garbage outâ bugs. Particularly prevalent are
+“garbage in/garbage out” bugs. Particularly prevalent are
 hard-to-identify bugs arising when a programmer inadvertently reverses
 the order of add and delete lists in a <small>SHOP3</small> operator. These problems
 are exacerbated by the extreme permissiveness of <small>SHOP3</small>&rsquo;s parser.
@@ -1894,7 +1986,7 @@ supports arbitrary order and the omission of empty components, without
 the &ldquo;DWIM&rdquo; parsing in <small>SHOP2</small>.
 Because of its many advantages, so we encourage you to adopt the new
 syntax, 
-instead of continuing to use the âclassicalâ form described here,
+instead of continuing to use the “classical” form described here,
 although it is still supported.
 </p>
 <p>The original operator definition syntax was as follows:
@@ -1936,24 +2028,34 @@ Next: <a href="#Planning-Domain" accesskey="n" rel="next">Planning Domain</a>, P
 <span id="Methods-1"></span><h3 class="section">4.11 Methods</h3>
 <span id="g_t_0023methods"></span><p>A <strong>method</strong> is a list of the form
 </p>
-<p>(:method <em>h</em> [<em>n<sub>1</sub></em>] <em>C<sub>1</sub></em> <em>T<sub>1</sub></em>
-[<em>n<sub>2</sub></em>] <em>C<sub>2</sub></em> <em>T<sub>2</sub></em> ... [<em>n<sub>k</sub></em>]
-<em>C<sub>k</sub></em> <em>T<sub>k</sub></em>)
-</p>
+
+<div class="lisp">
+<pre class="lisp">(:method [<var>m<sub>id</sub></var>] <var>h</var> [<var>n<sub>1</sub></var>] <var>C<sub>1</sub></var> <var>T<sub>1</sub></var>
+[<var>n<sub>2</sub></var>] <var>C<sub>2</sub></var> <var>T<sub>2</sub></var> &hellip; [<var>n<sub>k</sub></var>]
+<var>C<sub>k</sub></var> <var>T<sub>k</sub></var>)
+</pre></div>
+
 <p>where
 </p>
 <ul>
-<li> <em>h</em> (which is called the method&rsquo;s <strong>head</strong>) is a task atom in
-which no <em>call- or eval-terms</em> can appear;
+<li> <var>m<sub>id</sub></var> is an <em>optional</em> identifier for this method expression.
+Note that this is distinct from the (also optional) identifiers for each
+precondition/task network pair, <var>n<sub>i</sub></var>, described below.  The
+exception to this rule is that a precondition/task network identifier,
+if supplied, for a method expression with only a single such pair, will
+be used as the identifier for the entire method expression.
 
-</li><li> Each <em>C<sub>i</sub></em> (which is called a <strong>precondition</strong> for the
+</li><li> <var>h</var> (which is called the method&rsquo;s <strong>head</strong>) is a task atom in
+which no <em>call or eval terms</em> can appear;
+
+</li><li> Each <var>C<sub>i</sub></var> (which is called a <strong>precondition</strong> for the
 method) is a logical precondition.
 
-</li><li> Each <em>T<sub>i</sub></em> (which is called a <strong>tail</strong> of the method) is
-a task list. The task atoms in the list can contain call-terms.
+</li><li> Each <var>T<sub>i</sub></var> (which is called a <strong>tail</strong> of the method) is
+a task list. The task atoms in the list can contain call terms.
 
-</li><li> Each n<em><sub>i</sub></em> is the <em>name</em> for the succeeding
-<em>C<sub>i</sub> T<sub>i </sub></em>pair. These name are optional and if omitted a
+</li><li> Each n<var><sub>i</sub></var> is the <em>name</em> for the succeeding
+<var>C<sub>i</sub> T<sub>i</sub></var> pair. These names are optional and if omitted a
 unique name will be assigned for each pair. These names have no semantic
 meaning to <small>SHOP3</small>, but are provided in order to help the user debug
 domain descriptions by looking at traces of <small>SHOP3</small>&rsquo;s behavior.
@@ -1961,13 +2063,15 @@ domain descriptions by looking at traces of <small>SHOP3</small>&rsquo;s behavio
 </li></ul>
 
 <p>A method indicates that the task specified in the method&rsquo;s head can be
-performed by performing all of the tasks in one of the methods tails
+performed by performing all of the tasks in one of the method&rsquo;s tails
 when one that tail&rsquo;s precondition is satisfied. Note that the
-preconditions are considered in the given order, and a later
+preconditions in a single <code>:method</code> expression are considered in the given order, and a later
 precondition is considered <em>only</em> if all of the earlier
-preconditions are not satisfied. If there are multiple methods for a
-given task available at some point in time, all of these methods can be
-considered. Consequently, the following code:
+preconditions are not satisfied. 
+</p>
+<p>On the other hand, if there are multiple top-level methods for a
+given task available at some point in time, all of these methods will be
+considered (through backtracking). Consequently, the following code:
 </p>
 <div class="lisp">
 <pre class="lisp">(:method (eat ?food)
@@ -1976,6 +2080,7 @@ considered. Consequently, the following code:
     (have-spoon ?spoon)
     ((!eat-with-spoon ?food ?spoon))
 </pre></div>
+
 <p>is semantically equivalent to the following code with multiple methods
 and explicitly exclusive preconditions:
 </p>
@@ -1988,9 +2093,26 @@ and explicitly exclusive preconditions:
     (and (not (have-fork ?fork)) (have-spoon ?spoon))
     ((!eat-with-spoon ?food ?spoon))
 </pre></div>
-<p>In both of the above examples, the !eat-with-spoon operator may be
-performed only if the (have-spoon ?spoon) is satisfied <em>and</em>
+
+<p>In both of the above examples, the <code>!eat-with-spoon</code> operator may be
+performed only if <code>(have-spoon ?spoon)</code> is satisfied <em>and</em>
 <code>(have-fork ?fork)</code> is not satisfied.
+</p>
+<p>This should be compared with the following case, where one is permitted
+to eat with <em>either</em> fork or spoon &ndash; where the spoon is not
+limited to use when a fork is not available:
+</p>
+<div class="lisp">
+<pre class="lisp">(:method (eat ?food)
+   (have-fork ?fork)
+   ((!eat-with-fork ?food ?fork)))
+
+(:method (eat ?food)
+    (have-spoon ?spoon)
+    ((!eat-with-spoon ?food ?spoon))
+</pre></div>
+
+<p>In this case, both alternatives will be tried.
 </p>
 <hr>
 <span id="Planning-Domain"></span><div class="header">
@@ -1998,19 +2120,24 @@ performed only if the (have-spoon ?spoon) is satisfied <em>and</em>
 Next: <a href="#Planning-Problem" accesskey="n" rel="next">Planning Problem</a>, Previous: <a href="#Methods" accesskey="p" rel="prev">Methods</a>, Up: <a href="#The-SHOP3-Formalism" accesskey="u" rel="up">The SHOP3 Formalism</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Planning-Domain-1"></span><h3 class="section">4.12 Planning Domain</h3>
-<span id="g_t_0023planning_002ddomain"></span><p>A <strong>planning domain</strong> is an object that contains all of the
-information for solving a class of planning problems<a id="DOCF2" href="#FOOT2"><sup>2</sup></a>. At a minimum, it will include
-definitions of the operators (or actions) and methods available in the
-domain. A planning domain definition may also contain axioms, or other
-items that are accepted by specific SHOP domain extensions. Finally, a
-domain definition can <em>include</em> other domains by reference (see ,
-below).
+<span id="index-domain"></span>
+
+<span id="g_t_0023planning_002ddomain"></span><p>A <strong>planning domain</strong> is an object that
+contains all of the information for solving a class of planning
+problems<a id="DOCF3" href="#FOOT3"><sup>3</sup></a>. At a minimum, it
+will include definitions of the operators (or actions) and methods
+available in the domain. A planning domain definition may also contain
+axioms, or other items that are accepted by specific SHOP domain
+extensions. Finally, a domain definition can <em>include</em> other
+domains by reference, see <a href="#Inclusion-directives">Inclusion directives</a>.
 </p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Simple-Form" accesskey="1">Simple Form</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Extended-form" accesskey="2">Extended form</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Inclusion-directives" accesskey="3">Inclusion directives</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#The-domain-variable" accesskey="3">The domain variable</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Inclusion-directives" accesskey="4">Inclusion directives</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -2020,10 +2147,11 @@ below).
 Next: <a href="#Extended-form" accesskey="n" rel="next">Extended form</a>, Previous: <a href="#Planning-Domain" accesskey="p" rel="prev">Planning Domain</a>, Up: <a href="#Planning-Domain" accesskey="u" rel="up">Planning Domain</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Simple-Form-1"></span><h4 class="subsection">4.12.1 Simple Form</h4>
+<span id="index-defdomain"></span>
 <span id="g_t_0023simple_002dform"></span><p>A planning domain definition in the simple form looks like this:
 </p>
 <div class="lisp">
-<pre class="lisp">(defdomain <em>domain-name</em> (<em>i<sub>1</sub></em> <em>i<sub>2</sub></em> ... <em>i<sub>n</sub></em>))
+<pre class="lisp">(defdomain <em>domain-name</em> (<em>i<sub>1</sub></em> <em>i<sub>2</sub></em> &hellip; <em>i<sub>n</sub></em>))
 </pre></div>
 
 <p>where <em>domain-name</em> is a symbol (which does not need to be quoted).
@@ -2036,60 +2164,72 @@ method, or an axiom.
 <hr>
 <span id="Extended-form"></span><div class="header">
 <p>
-Next: <a href="#Inclusion-directives" accesskey="n" rel="next">Inclusion directives</a>, Previous: <a href="#Simple-Form" accesskey="p" rel="prev">Simple Form</a>, Up: <a href="#Planning-Domain" accesskey="u" rel="up">Planning Domain</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#The-domain-variable" accesskey="n" rel="next">The domain variable</a>, Previous: <a href="#Simple-Form" accesskey="p" rel="prev">Simple Form</a>, Up: <a href="#Planning-Domain" accesskey="u" rel="up">Planning Domain</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Extended-form-1"></span><h4 class="subsection">4.12.2 Extended form</h4>
-<span id="g_t_0023extended_002dform"></span><p>The extended form of the <small>SHOP3</small> domain definition looks like this:
+<span id="g_t_0023extended_002dform"></span><span id="index-defdomain-1"></span>
+<span id="index-defdomain_002c-extended-form"></span>
+<p>The extended form of the <small>SHOP3</small> domain definition looks like this:
 </p>
 <div class="lisp">
-<pre class="lisp">(defdomain (<em>domain-name</em> &amp;rest <em>args</em>) (<em>i<sub>1</sub></em>
-<em>i<sub>2</sub></em> ... <em>i<sub>n</sub></em>))
+<pre class="lisp">(defdomain (<var>domain-name</var> &amp;rest <var>args</var>) (<var>i<sub>1</sub></var> <var>i<sub>2</sub></var> &hellip; <var>i<sub>n</sub></var>))
 </pre></div>
 
 <p><em>args</em> includes the following keyword arguments:
 </p>
 <ul>
-<li> a :type keyword argument, allowing the domain modeler to indicate a
+<li> a <code>:type</code> keyword argument, allowing the domain modeler to indicate a
 specific subclass of the <small>SHOP3</small> domain class. E.g., one might have
-(my-domain :type pddl-domain).
+<code>(my-domain :type pddl-domain)</code>.
+<span id="index-domain-_003atype-argument"></span>
 
-</li><li> A :redefine-ok argument. If this is NIL (the default), defdomain will
+</li><li> A <code>:redefine-ok</code> argument. If this is <code>NIL</code> (the default), defdomain will
 warn when the domain <em>domain-name</em> is already defined.
+<span id="index-domain-_003aredefine_002dok-argument"></span>
 
-</li><li> A :noset argument. Currently this defaults to NIL, to provide for
+</li><li> A <code>:noset</code> argument. Should the dynamic variable <code>*domain*</code> be
+bound as a side-effect of evaluating the <code>defdomain</code> expression?Currently this defaults to <code>NIL</code>, to provide for
 backward compatibility, but I would like to see this move to defaulting
-to T.
+to <code>T</code>.  See discussion of <code>*domain*</code> below.
+<span id="index-domain-_003anoset-argument"></span>
 
 </li></ul>
 
+<hr>
+<span id="The-domain-variable"></span><div class="header">
+<p>
+Next: <a href="#Inclusion-directives" accesskey="n" rel="next">Inclusion directives</a>, Previous: <a href="#Extended-form" accesskey="p" rel="prev">Extended form</a>, Up: <a href="#Planning-Domain" accesskey="u" rel="up">Planning Domain</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="The-_002adomain_002a-variable"></span><h4 class="subsection">4.12.3 The <code>*domain*</code> variable</h4>
 <span id="index-_002adomain_002a"></span>
 
-<p>This is actually a bit of a kludge. The existing defdomain form, as a
+<p>This is actually a bit of a kludge. The existing <code>defdomain</code> implementation, as a
 side-effect, sets the global variable <var>*domain*</var>. If this were only a
 default domain name, that would be fine, but it is used everywhere as a
-special variable to mean âthe domain within which we are planning.â So
+special variable to mean “the domain within which we are planning.” So
 if there&rsquo;s concurrent action, or there are multiple copies of SHOP (or
 its component libraries) running in a single Lisp image, bad things can
 happen. I would like to stamp out the use of <var>*domain*</var> as a default
 domain.
 </p>
 <p>The question of which additional arguments are accepted in <em>args</em>
-is a matter for the implementer of the specialized domain type being
-used. Any additional arguments will be passed to the make-instance
-method for the domain class.<a id="DOCF3" href="#FOOT3"><sup>3</sup></a> <small>SHOP3</small> extenders can create new subclasses of
+is a matter for the implementer of the specialized domain type<a id="DOCF4" href="#FOOT4"><sup>4</sup></a> being
+used. Any additional arguments will be passed to the <code>make-instance</code>
+method for the <code>domain</code> subclass.<a id="DOCF5" href="#FOOT5"><sup>5</sup></a> <small>SHOP3</small> extenders can create new subclasses of
 domain that accept initialization arguments. A first example of the use
-of this is the built-in pddl-domain class.
+of this is the built-in <code>pddl-domain</code> class.
+<span id="index-pddl_002ddomain"></span>
 </p>
-<p>If you are using the extended form of defdomain, you should have in hand
+<p>If you are using the extended form of <code>defdomain</code>, you should have in hand
 a new <small>SHOP3</small> domain subclass, with a description of its arguments. If you
 do not, you should ignore the extended form.
 </p>
 <hr>
 <span id="Inclusion-directives"></span><div class="header">
 <p>
-Previous: <a href="#Extended-form" accesskey="p" rel="prev">Extended form</a>, Up: <a href="#Planning-Domain" accesskey="u" rel="up">Planning Domain</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="#The-domain-variable" accesskey="p" rel="prev">The domain variable</a>, Up: <a href="#Planning-Domain" accesskey="u" rel="up">Planning Domain</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Inclusion-directives-1"></span><h4 class="subsection">4.12.3 Inclusion directives</h4>
+<span id="Inclusion-directives-1"></span><h4 class="subsection">4.12.4 Inclusion directives</h4>
 <span id="index-_003ainclude"></span>
 <span id="index-include-directives"></span>
 <span id="index-domain-inclusion"></span>
@@ -2101,7 +2241,6 @@ using the include directive:
 <pre class="lisp">(:include <em>domain-name file-name</em>)
 </pre></div>
 
-
 <p>for example
 </p>
 <div class="lisp">
@@ -2109,11 +2248,17 @@ using the include directive:
   #.(asdf:system-relative-pathname &quot;core-domains&quot; &quot;domains.lisp&quot;))
 </pre></div>
 
-
 <p>would take the text of the flight-operators domain, which should be
 found in the domains.lisp file. Note the use of the reader evaluation
 form &ndash; <code>#.</code> &ndash; to force evaluation of the expression that yields the
 pathname.
+</p>
+<p><b>Designer&rsquo;s Note:</b> <small>SHOP3</small>&rsquo;s inclusion directive is a mess.  <small>SHOP3</small>
+really <em>needs</em> an inclusion directive, but it is a poor fit to
+<code>defdomain</code>, because the latter is an <em>executable macro</em>, but
+the inclusion directive is inherently <em>file-based</em>, rather than
+<em>code</em> (s-expression)-based. I have not been able to come up with a
+more graceful solution, however. <i>&ndash;rpg</i>
 </p>
 <hr>
 <span id="Planning-Problem"></span><div class="header">
@@ -2129,7 +2274,7 @@ Next: <a href="#Planning-Problem-Set" accesskey="n" rel="next">Planning Problem 
 <p>A <strong>planning problem</strong> has the form
 </p>
 <p>(defproblem <em>problem-name domain-name</em> (<em>a<sub>1</sub></em>
-<em>a<sub>2</sub></em> ... <em>a<sub>n</sub></em>) <em>T</em>)
+<em>a<sub>2</sub></em> &hellip; <em>a<sub>n</sub></em>) <em>T</em>)
 </p>
 <p>where <em>problem-name</em> is a symbol, <em>domain-name</em> is a symbol,
 each a<em><sub>i</sub></em> is a ground logical atom, and <em>T</em> is a task
@@ -2168,7 +2313,7 @@ Next: <a href="#Plans" accesskey="n" rel="next">Plans</a>, Previous: <a href="#P
 <p>A <strong>planning problem set</strong> has the form
 </p>
 <div class="lisp">
-<pre class="lisp">(def-problem-set <em>set-name</em> (<em>p<sub>1</sub></em> <em>p<sub>2</sub></em> ... <em>p<sub>n</sub></em>))
+<pre class="lisp">(def-problem-set <em>set-name</em> (<em>p<sub>1</sub></em> <em>p<sub>2</sub></em> &hellip; <em>p<sub>n</sub></em>))
 </pre></div>
 
 <p>where <em>set-name</em> is a symbol and each p<em><sub>i</sub></em> is the name
@@ -2186,16 +2331,16 @@ Previous: <a href="#Planning-Problem-Set" accesskey="p" rel="prev">Planning Prob
 describes the result that <small>SHOP3</small> produces. A <strong>plan</strong> is a list of
 the form
 </p>
-<p><em>(h<sub>1</sub> c<sub>1</sub> h<sub>2</sub> c<sub>2</sub> ... h<sub>n</sub> c<sub>n</sub> )</em>
+<p><em>(h<sub>1</sub> c<sub>1</sub> h<sub>2</sub> c<sub>2</sub> &hellip; h<sub>n</sub> c<sub>n</sub> )</em>
 </p>
 <p>where each <em>h<sub>i</sub></em> and <em>c<sub>i</sub></em>, respectively, are the
 head and the cost of a ground operator instance <em>o<sub>i</sub></em>. If
-<em>p</em> = (<em>h<sub>1</sub></em> <em>c<sub>1</sub> h<sub>2</sub></em> <em>c<sub>2</sub></em> ...
+<em>p</em> = (<em>h<sub>1</sub></em> <em>c<sub>1</sub> h<sub>2</sub></em> <em>c<sub>2</sub></em> &hellip;
 <em>h<sub>n</sub> c<sub>n</sub></em>) is a plan and <em>S</em> is a state, then
 <em>p</em>(<em>S</em>) is the state produced by starting with <em>S</em> and
-executing <em>o<sub>1</sub></em>, <em>o<sub>2</sub></em>, ..., <em>o<sub>n</sub></em> in the
+executing <em>o<sub>1</sub></em>, <em>o<sub>2</sub></em>, &hellip;, <em>o<sub>n</sub></em> in the
 order given. The <strong>cost</strong> of the plan <em>p</em> is <em>c<sub>1 </sub></em>+
-<em>c<sub>2 </sub></em>+ ... + <em>c<sub>n</sub></em> (thus, the cost of the empty
+<em>c<sub>2 </sub></em>+ &hellip; + <em>c<sub>n</sub></em> (thus, the cost of the empty
 plan is 0).
 </p>
 <p>Often what is wanted is a truncated version of the plan sequence, with
@@ -2220,25 +2365,25 @@ Next: <a href="#The-SHOP-Theorem-Prover" accesskey="n" rel="next">The SHOP Theor
 <span id="g_t_0023pddl_002dcompatibility"></span><p>The current release of <small>SHOP3</small> provides a preliminary capability to
 incorporate PDDL domain definitions into a <small>SHOP3</small> domain. You should be
 able to incorporate components of a PDDL domain definition into a <small>SHOP3</small>
-domain definition of :type pddl-domain or simple-pddl-domain. A
-pddl-domain corresponds to a PDDL domain of the ADL type. The
-pddl-domain uses conditional-effects, existential-preconditions,
+domain definition of <code>:type pddl-domain</code> or <code>simple-pddl-domain</code>. A
+<code>pddl-domain</code> corresponds to a PDDL domain of the ADL type. The
+<code>pddl-domain </code>uses conditional-effects, existential-preconditions,
 universal-preconditions, and equality (note that these are <em>PDDL</em>
 conditional effects, existential preconditions and universal
 preconditions; these are <em>not</em> SHOP-syntax condition effects,
-etc.). A simple-pddl-domain will not have conditional-effects,
+etc.). A <code>simple-pddl-domain</code> will not have conditional-effects,
 existential-preconditions, universal-preconditions, or equality.
 </p>
 <p>Currently the PDDL integration is a little bumpy, and details are in
 flux.
 </p>
 <p>PDDL action names are translated into names that SHOP will recognize as
-primitives (e.g., move would become !move, and would have to be
+primitives (e.g., <tt>move</tt> would become <tt>!move</tt>, and would have to be
 referenced that way in SHOP method definitions that use it).
 </p>
 <p>You must splice the PDDL domain components into the SHOP domain
-definition. Typically, the best way to do this is to use an :include
-form (see ).
+definition. Typically, the best way to do this is to use an <tt>:include</tt>
+form (see <a href="#Inclusion-directives">Inclusion directives</a> ).
 </p>
 <p>Fully ground STRIPS-style domains &ndash; i.e., those where a set of STRIPS
 operators has been exploded into a large set of ground operators by some
@@ -2247,19 +2392,105 @@ automated transformation &ndash; will work very poorly.
 <p>Note that the parsing of PDDL domains in SHOP is not strict. This is
 intentional, because we don&rsquo;t want to make it impossible to include SHOP
 constructs together with PDDL constructs. However, there should probably
-be a âstrict modeâ that checks for true conformance with PDDL syntax.
+be a “strict mode” that checks for true conformance with PDDL syntax.
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#PDDL-Methods" accesskey="1">PDDL Methods</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#PDDL-Metric-Fluents" accesskey="1">PDDL Metric Fluents</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#PDDL-Methods" accesskey="2">PDDL Methods</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#PDDL-Domain-Classes" accesskey="3">PDDL Domain Classes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 <hr>
+<span id="PDDL-Metric-Fluents"></span><div class="header">
+<p>
+Next: <a href="#PDDL-Methods" accesskey="n" rel="next">PDDL Methods</a>, Previous: <a href="#PDDL-Support" accesskey="p" rel="prev">PDDL Support</a>, Up: <a href="#PDDL-Support" accesskey="u" rel="up">PDDL Support</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="PDDL-Metric-Fluents-1"></span><h3 class="section">5.1 PDDL Metric Fluents</h3>
+
+<p>We have recently added support for PDDL operators with metric fluents,
+signaled by PDDL&rsquo;s <tt>:fluents</tt> requirement.
+Metric fluents are numerically-valued functions of domain objects.  Here
+is an example taken from Fox and Long&rsquo;s paper on PDDL 2.1, and updated
+to the changes in PDDL syntax they specify:
+</p>
+<div class="example">
+<pre class="example">(define (domain jug-pouring)
+  (:requirements :typing :fluents)
+  (:types jug)
+  (:functions
+   (amount ?j - jug) (capacity ?j - jug))
+  (:action empty
+    :parameters (?jug1 ?jug2 - jug)
+    :precondition (&gt;= (- (capacity ?jug2) (amount ?jug2))
+                                 (amount ?jug1)))
+    :effect (and (assign (amount ?jug1) 0)
+                       (assign (amount ?jug2)
+                              (+ (amount ?jug1) (amount ?jug2))))))
+</pre></div>
+
+<p>In the above example, the two functions are <tt>amount</tt> and <tt>capacity</tt>,
+and we see use of the update operator <tt>assign</tt> (other such operators
+are <tt>increase</tt>, <tt>decrease</tt>, <tt>scale-up</tt>, and <tt>scale-down</tt>), the
+comparison predicate <code>&gt;=</code> (there are also <code>&lt;=</code>, <code>&lt;</code>,
+<code>&gt;</code>, and <code>=</code>),
+and the binary arithmetic operators
+<code>-</code> and <code>+</code> (<code>*</code> and <code>/</code> are also supported).
+</p>
+<span id="index-FLUENTS_002dMIXIN"></span>
+<p>See <a href="#PDDL-Domain-Classes">PDDL Domain Classes</a>, specifically the discussion of the
+<code>fluents-mixin</code> class for more details.
+</p>
+<span id="Implementation-Notes"></span><h4 class="subsection">5.1.1 Implementation Notes</h4>
+
+<p>As the name suggests, the <code>domain</code> mixin class <code>fluents-mixin</code>
+is responsible for the correct interpretation of PDDL metric fluents.
+This requires extensions to the SHOP theorem prover and to the
+interpretation of PDDL actions.
+</p>
+<span id="index-FLUENT_002dVALUE"></span>
+<p>In its state representation, SHOP stores the current values of metric
+fluents using the dedicated predicate <code>FLUENT-VALUE</code>, as in, for
+example: <code>(fluent-value (capacity jug0) 12)</code>.   When the value of a
+metric fluent must be found, this is the form of literal that is
+actually retrieved.
+</p>
+<span id="index-F_002dEXP_002dVALUE"></span>
+<p>In the grammar of PDDL, there are also fluent expressions (<tt>f-exp</tt>s)
+that are made up of fluent values, numbers, binary and unary operators.
+Internally, the SHOP theorem-prover uses the special predicate
+<code>F-EXP-VALUE</code> to find values of such expressions, and has a
+special-purpose inference rule coded for them.  These expressions appear
+both in preconditions (as part of comparison predications) and in action
+effects (as part of updates).
+</p>
+<span id="index-FLUENT_002dCHECK"></span>
+<p>A fluent comparison (<code>f-comp</code> in the PDDL grammar) is a binary
+comparison applied to two <code>f-exp</code>s.  Internally, the theorem-prover
+uses the distinguished predicate <code>fluent-check</code> to check these.  As
+one would expect, it first evaluates the two fluent expressions and then
+applies the comparison operator.
+</p>
+<p>When handling updates to fluent expressions, parsing methods on the
+<code>fluents-mixin</code> class will translate update expressions into new
+<code>fluent-update</code> expressions of the following form:
+</p>
+<div class="example">
+<pre class="example">(fluent-update <var>update-op</var> <var>fluent-function</var> <var>f-exp</var>)
+</pre></div>
+
+<span id="index-APPLY_002dACTION"></span>
+<p>Special code for handling such effect expressions has been added to the
+<code>apply-action</code> function in SHOP.
+</p>
+<hr>
 <span id="PDDL-Methods"></span><div class="header">
 <p>
-Previous: <a href="#PDDL-Support" accesskey="p" rel="prev">PDDL Support</a>, Up: <a href="#PDDL-Support" accesskey="u" rel="up">PDDL Support</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#PDDL-Domain-Classes" accesskey="n" rel="next">PDDL Domain Classes</a>, Previous: <a href="#PDDL-Metric-Fluents" accesskey="p" rel="prev">PDDL Metric Fluents</a>, Up: <a href="#PDDL-Support" accesskey="u" rel="up">PDDL Support</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="PDDL-Methods-1"></span><h3 class="section">5.1 PDDL Methods</h3>
-<span id="g_t_0023pddl_002dmethods"></span><p>In order to support replanning, we have developed âPDDL methodsâ that
+<span id="PDDL-Methods-1"></span><h3 class="section">5.2 PDDL Methods</h3>
+<span id="g_t_0023pddl_002dmethods"></span><p>In order to support replanning, we have developed “PDDL methods” that
 have more limited expressive power than normal <small>SHOP3</small> methods, and that
 have clearer semantics. This feature is <em>experimental:</em> the syntax,
 semantics, and implementation are all likely to change.
@@ -2267,15 +2498,15 @@ semantics, and implementation are all likely to change.
 <p>PDDL method proposed syntax:
 </p>
 <div class="lisp">
-<pre class="lisp">(:pddl-method <em>head<sub>[Ï]</sub> precond<sub>[Ï]</sub> body<sub>[Ï]</sub></em>)
+<pre class="lisp">(:pddl-method <em>head<sub>[φ]</sub> precond<sub>[φ]</sub> body<sub>[φ]</sub></em>)
 </pre></div>
 
 
 <p>As in normal <small>SHOP3</small> methods (see Section 4.11), a PDDL Method&rsquo;s head is a
-task. We notate it here as <em>head<sub>[Ï]</sub></em> in order to indicate
-that some set of variables, Ï, may appear free in the head. Similarly,
-we have <em>precond<sub>[Ï]</sub></em> and <em>body<sub>[Ï] </sub></em>to indicate
-that Ï may appear free in the preconditions and the body. A PDDL
+task. We notate it here as <em>head<sub>[φ]</sub></em> in order to indicate
+that some set of variables, φ, may appear free in the head. Similarly,
+we have <em>precond<sub>[φ]</sub></em> and <em>body<sub>[φ] </sub></em>to indicate
+that φ may appear free in the preconditions and the body. A PDDL
 method&rsquo;s preconditions must be an enhanced PDDL goal expression (see
 below). A PDDL method&rsquo;s body must be an ordered task network. In the
 interests of clean syntax, task network keywords (:ordered and
@@ -2285,7 +2516,7 @@ networks may be supported later.
 </p>
 <p>Note that provision for free variables does not relax the constraint
 that all operators must be ground when inserted into the plan. The
-intention is to allow the variables in Ï to be bound by the
+intention is to allow the variables in φ to be bound by the
 preconditions. As in PDDL operators, only the variables in the head of a
 PDDL method are scoped over the preconditions and the body (in standard
 <small>SHOP3</small> methods we have Prolog-style scoping where any free variable is
@@ -2298,20 +2529,18 @@ get this kind of semantics in PDDL methods, the programmer must supply a
 set of methods with mutually-exclusive and exhaustive preconditions.
 </p>
 <p>PDDL methods may only be used in domains that are a subclass of
-<code>SIMPLE-PDDL-DOMAIN</code> (see Section 8.1.2).
+<code>SIMPLE-PDDL-DOMAIN</code> (see <a href="#PDDL-Domain-Classes">PDDL Domain Classes</a>).
 </p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Enhanced-Preconditions" accesskey="1">Enhanced Preconditions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#PDDL-Domain-Classes" accesskey="2">PDDL Domain Classes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 <hr>
 <span id="Enhanced-Preconditions"></span><div class="header">
 <p>
-Next: <a href="#PDDL-Domain-Classes" accesskey="n" rel="next">PDDL Domain Classes</a>, Previous: <a href="#PDDL-Methods" accesskey="p" rel="prev">PDDL Methods</a>, Up: <a href="#PDDL-Methods" accesskey="u" rel="up">PDDL Methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="#PDDL-Methods" accesskey="p" rel="prev">PDDL Methods</a>, Up: <a href="#PDDL-Methods" accesskey="u" rel="up">PDDL Methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Enhanced-Preconditions-1"></span><h4 class="subsection">5.1.1 Enhanced Preconditions</h4>
+<span id="Enhanced-Preconditions-1"></span><h4 class="subsection">5.2.1 Enhanced Preconditions</h4>
 <span id="index-PDDL-method-preconditions"></span>
 <span id="index-Sorting-in-PDDL-method-preconditions"></span>
 <p>PDDL method preconditions are based on PDDL <em>goals</em>, but with the
@@ -2347,9 +2576,9 @@ could change.
 <hr>
 <span id="PDDL-Domain-Classes"></span><div class="header">
 <p>
-Previous: <a href="#Enhanced-Preconditions" accesskey="p" rel="prev">Enhanced Preconditions</a>, Up: <a href="#PDDL-Methods" accesskey="u" rel="up">PDDL Methods</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="#PDDL-Methods" accesskey="p" rel="prev">PDDL Methods</a>, Up: <a href="#PDDL-Support" accesskey="u" rel="up">PDDL Support</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="PDDL-Domain-Classes-1"></span><h4 class="subsection">5.1.2 PDDL Domain Classes</h4>
+<span id="PDDL-Domain-Classes-1"></span><h3 class="section">5.3 PDDL Domain Classes</h3>
 
 <p>In order to implement the requirements of PDDL, <small>SHOP3</small> contains a number
 of classes, which can be used when defining domains with <code>defdomain</code>
@@ -2402,6 +2631,9 @@ existential preconditions, since they are typically used together.
 </li><li> <span id="index-ADL_002dMIXIN"></span>
 <code>ADL-MIXIN</code>
 
+</li><li> <span id="index-FLUENTS_002dMIXIN-1"></span>
+<code>FLUENTS-MIXIN</code>
+
 </li></ul>
 
 </li></ul>
@@ -2440,7 +2672,7 @@ is properly set in <code>goals</code>.
 </p></dd></dl>
 <span id="index-find_002dsatisfiers-_005bshopthpr_005d"></span>
 <span id="Function-shopthpr_003afind_002dsatisfiers"></span><dl>
-<dt id="index-find_002dsatisfiers-_005bshopthpr_005d-1">Function: <strong>find-satisfiers [shopthpr]</strong> <em>goals state &amp;optional just-one level &amp;key domain</em></dt>
+<dt id="index-find_002dsatisfiers-_005bshopthpr_005d-1">Function: <strong>find-satisfiers [shopthpr]</strong> <em>goals state &amp;key just-one level domain</em></dt>
 <dd><p>Find and return a list of binding lists that represents the answer to
 goals (a list representation of a deductive query), where
 state provides the database.  level is a non-negative integer indicating the
@@ -2457,7 +2689,7 @@ of axioms (although it can be extended by the programmer).
 <span id="index-thpr_002ddomain-_005bshopthpr_005d"></span>
 <span id="Class-shopthpr_003athpr_002ddomain"></span><dl>
 <dt id="index-thpr_002ddomain-_005bshopthpr_005d-1">Class: <strong>thpr-domain [shopthpr]</strong></dt>
-<dd><p>Class precedence list: <code>thpr-domain, has-axioms-mixin, standard-object, t</code>
+<dd><p>Class precedence list: <code>thpr-domain, domain-core, has-axioms-mixin, standard-object, t</code>
 </p>
 <p>An object representing a SHOP3 theorem prover domain.
 </p></dd></dl>
@@ -2477,7 +2709,7 @@ Next: <a href="#Plan-Grapher" accesskey="n" rel="next">Plan Grapher</a>, Previou
 
 <p>It provides a library that may be useful for general symbolic
 computation that requires unification of first order (or, indeed, higher
-order) logical expressions represented as lisp s-expressions.
+order) logical expressions represented as Lisp s-expressions.
 </p>
 <span id="index-unify-_005bshopunif_005d"></span>
 <span id="Function-shopunif_003aunify"></span><dl>
@@ -2602,7 +2834,7 @@ variables, with new names.
 <hr>
 <span id="Plan-Grapher"></span><div class="header">
 <p>
-Next: <a href="#Internal-Technical-Information" accesskey="n" rel="next">Internal Technical Information</a>, Previous: <a href="#The-SHOP-Unifier" accesskey="p" rel="prev">The SHOP Unifier</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Data-Structures" accesskey="n" rel="next">Data Structures</a>, Previous: <a href="#The-SHOP-Unifier" accesskey="p" rel="prev">The SHOP Unifier</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Plan-Grapher-1"></span><h2 class="chapter">8 Plan Grapher</h2>
 
@@ -2611,14 +2843,12 @@ we have developed the <small>SHOP3</small> plan grapher.
 </p>
 <span id="index-graph_002dplan_002dtree-_005bspg_005d"></span>
 <span id="Function-spg_003agraph_002dplan_002dtree"></span><dl>
-<dt id="index-graph_002dplan_002dtree-_005bspg_005d-1">Function: <strong>graph-plan-tree [spg]</strong> <em>plan-forest &amp;key tree-processor graph-object</em></dt>
-<dd><p>Takes a <code>shop</code> plan forest <code>(plan-tree) </code>as input, and returns a <code>cl-dot</code> graph object.
-Note that the <code>plan-tree</code> name is a misnomer that reflects <code>shop</code> <code>find-plans</code> misnomer.
-If you ask for plan trees from <code>shop</code>, you really get plan *forests*.
+<dt id="index-graph_002dplan_002dtree-_005bspg_005d-1">Function: <strong>graph-plan-tree [spg]</strong> <em>plan-forest &amp;key tree-processor attributes graph-object</em></dt>
+<dd><p>Takes a <code>shop</code> plan forest <code>(plan-forest) </code>as input, and returns a <code>cl-dot</code> graph object.
 </p></dd></dl>
 <span id="index-graph_002denhanced_002dplan_002dtree-_005bspg_005d"></span>
 <span id="Function-spg_003agraph_002denhanced_002dplan_002dtree"></span><dl>
-<dt id="index-graph_002denhanced_002dplan_002dtree-_005bspg_005d-1">Function: <strong>graph-enhanced-plan-tree [spg]</strong> <em>plan-tree &amp;key graph-object label-dependencies show-dependencies</em></dt>
+<dt id="index-graph_002denhanced_002dplan_002dtree-_005bspg_005d-1">Function: <strong>graph-enhanced-plan-tree [spg]</strong> <em>plan-tree &amp;key graph-object attributes label-dependencies show-dependencies</em></dt>
 <dd><p>Takes an enhanced <code>shop</code> plan tree <code>(plan-tree) </code>as input, and returns a <code>cl-dot</code> graph object.
 </p></dd></dl>
 
@@ -2640,11 +2870,143 @@ tailor display of <code>shop</code> plan trees.
 </p></dd></dl>
 
 <hr>
+<span id="Data-Structures"></span><div class="header">
+<p>
+Next: <a href="#Internal-Technical-Information" accesskey="n" rel="next">Internal Technical Information</a>, Previous: <a href="#Plan-Grapher" accesskey="p" rel="prev">Plan Grapher</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Data-Structures-1"></span><h2 class="chapter">9 Data Structures</h2>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#States" accesskey="1">States</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<span id="States"></span><div class="header">
+<p>
+Previous: <a href="#Data-Structures" accesskey="p" rel="prev">Data Structures</a>, Up: <a href="#Data-Structures" accesskey="u" rel="up">Data Structures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="States-1"></span><h3 class="section">9.1 States</h3>
+
+<p>A state represents the state of the world at any given time, and is
+identified with a set of ground literals.<a id="DOCF6" href="#FOOT6"><sup>6</sup></a>  
+The meaning of the state is a
+function of this set of ground literals and the set of axioms in
+effect. For more discussion of the semantics of states, see
+see <a href="#States-and-Satisfiers">States and Satisfiers</a>.
+</p>
+<p>The programmer may choose from a number of different representations of
+world states, which may be more or less efficient, depending on the
+problem at hand:
+</p>
+<ul>
+<li> <code>:list</code> &ndash; 
+This is the simplest state representation, a
+simple list of facts. As the set of facts in the state description
+grows, the linear search for lookup that is required here will become
+increasingly expensive.
+</li><li> <code>:hash</code> &ndash; 
+In this representation, the state is represented as a hash table of
+propositions.  The performance of this alternative will depend on how
+well the host implementation hashes full s-expressions.
+</li><li> <code>:mixed</code> &ndash;
+This encoding, which is the default, uses a hash table, but hashes each
+state literal on its predicate.  As long as there are not very large
+data tables in the state, this should be quite efficient.  If there are
+many facts with the same predicate, this will devolve to linear search.
+</li><li> <code>:doubly-hashed</code> &ndash;
+<b>Newly added.</b>
+Similar to the <code>:mixed</code> representation, the state is represented as
+a hash table, indexed on state predicates.  However, each hash bucket in
+this representation is itself a hash table, indexed on the value of the
+first argument.  This should often improve performance on large data
+tables, where there are often checks of single facts.
+</li><li> <code>:bit</code> &ndash;
+The state is encoded as vectors, based on argument indices, etc. I don&rsquo;t
+understand the implementation well, nor do I understand under what
+conditions it will work well or badly. I believe for this to be correct,
+the set of possible values for a given predicate&rsquo;s arguments must be
+known in advance, but I can&rsquo;t say for sure. It would be helpful for
+someone to dig into this more deeply.  Until someone does, <em>this
+representation is probably to be avoided.</em>
+</li></ul>
+
+<p>Adding a new state representation is a relatively easy thing to do.  Any
+new state data structure must be a structure that extends
+<code>shop3.common::tagged-state</code>.  It must support the following
+generic functions:
+</p>
+<span id="index-make_002dinitial_002dstate-_005bshop3cmn_005d"></span>
+<span id="Generic_002dFunction-shop3cmn_003amake_002dinitial_002dstate"></span><dl>
+<dt id="index-make_002dinitial_002dstate-_005bshop3cmn_005d-1">Generic Function: <strong>make-initial-state [shop3cmn]</strong> <em>domain state-encoding atoms &amp;key</em></dt>
+<dd><p>Make a state according to a specified domain type and state encoding.
+Always takes a list of atoms, for special domain types, may take
+keyword arguments for additional state components.
+</p></dd></dl>
+<span id="Method-shop3cmn_003amake_002dinitial_002dstate-around-_0028_0028domain-fluents_002dmixin_0029-state_002dencoding-atoms--_0026key_0029"></span><dl>
+<dt id="index-around-make_002dinitial_002dstate-_005bshop3cmn_005d">Method: <strong>around make-initial-state [shop3cmn]</strong> <em>(domain fluents-mixin) state-encoding atoms &amp;key</em></dt>
+<dd><p>Rewrite initial state facts of the form <code>(= &lt;fluent-function&gt; &lt;value&gt;) </code>into
+new facts of the form (fluent-value fluent-function value).
+</p></dd></dl>
+
+<span id="index-state_002d_003estate_002dtype-_005bshop3cmn_005d"></span>
+<span id="Generic_002dFunction-shop3cmn_003astate_002d_003estate_002dtype"></span><dl>
+<dt id="index-state_002d_003estate_002dtype-_005bshop3cmn_005d-1">Generic Function: <strong>state-&gt;state-type [shop3cmn]</strong> <em>state</em></dt>
+<dd><p>Return the state-type keyword for <code>state</code>.
+</p></dd></dl>
+
+<span id="index-insert_002datom-_005bshop3cmn_005d"></span>
+<span id="Generic_002dFunction-shop3cmn_003ainsert_002datom"></span><dl>
+<dt id="index-insert_002datom-_005bshop3cmn_005d-1">Generic Function: <strong>insert-atom [shop3cmn]</strong> <em>atom state</em></dt>
+<dd><p>Insert the atom into the state.  The return value is
+   undefined. This function destructively modifies its state
+   argument.
+   Note that an atom is <code>not</code> a lisp atom <code>---</code> it is actually a list of
+   pred . args representing a first order logic positive literal.
+</p></dd></dl>
+
+<span id="index-remove_002datom-_005bshop3cmn_005d"></span>
+<span id="Generic_002dFunction-shop3cmn_003aremove_002datom"></span><dl>
+<dt id="index-remove_002datom-_005bshop3cmn_005d-1">Generic Function: <strong>remove-atom [shop3cmn]</strong> <em>atom state</em></dt>
+<dd><p>Delete the atom from the statebody.  The return value is
+   undefined.  This function destructively modifies its state
+   argument.
+      Note that an atom is <code>not</code> a lisp atom <code>---</code> it is actually a list of
+   pred . args representing a first order logic positive literal.
+</p></dd></dl>
+
+<span id="index-state_002datoms-_005bshop3cmn_005d"></span>
+<span id="Generic_002dFunction-shop3cmn_003astate_002datoms"></span><dl>
+<dt id="index-state_002datoms-_005bshop3cmn_005d-1">Generic Function: <strong>state-atoms [shop3cmn]</strong> <em>state</em></dt>
+<dd><p>Return the atoms of the state in a plain list
+</p></dd></dl>
+<span id="Method-shop3cmn_003astate_002datoms-_0028_0028problem-problem_0029_0029"></span><dl>
+<dt id="index-state_002datoms-_005bshop3cmn_005d-2">Method: <strong>state-atoms [shop3cmn]</strong> <em>(problem problem)</em></dt>
+<dd><p>automatically generated reader method
+</p></dd></dl>
+
+<span id="index-atom_002din_002dstate_002dp-_005bshop3cmn_005d"></span>
+<span id="Generic_002dFunction-shop3cmn_003aatom_002din_002dstate_002dp"></span><dl>
+<dt id="index-atom_002din_002dstate_002dp-_005bshop3cmn_005d-1">Generic Function: <strong>atom-in-state-p [shop3cmn]</strong> <em>atom state</em></dt>
+<dd><p>Is the atom in the state?
+</p></dd></dl>
+
+<p><code>state-all-atoms-for-predicate</code> </p>
+<p><code>state-candidate-atoms-for-goal</code> </p>
+<span id="index-copy_002dstate-_005bshop3cmn_005d"></span>
+<span id="Generic_002dFunction-shop3cmn_003acopy_002dstate"></span><dl>
+<dt id="index-copy_002dstate-_005bshop3cmn_005d-1">Generic Function: <strong>copy-state [shop3cmn]</strong> <em>state</em></dt>
+<dd><p>Return a copy of the state
+</p></dd></dl>
+
+
+
+<hr>
 <span id="Internal-Technical-Information"></span><div class="header">
 <p>
-Next: <a href="#Version-Differences" accesskey="n" rel="next">Version Differences</a>, Previous: <a href="#Plan-Grapher" accesskey="p" rel="prev">Plan Grapher</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#General-Notes-on-SHOP3" accesskey="n" rel="next">General Notes on SHOP3</a>, Previous: <a href="#Data-Structures" accesskey="p" rel="prev">Data Structures</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Internal-Technical-Information-1"></span><h2 class="chapter">9 Internal Technical Information</h2>
+<span id="Internal-Technical-Information-1"></span><h2 class="chapter">10 Internal Technical Information</h2>
 
 <p><strong>This section has not been updated since the transition
 from <small>SHOP2</small> to <small>SHOP3</small>, and its accuracy is likely
@@ -2675,7 +3037,7 @@ within <small>SHOP3</small> that are used to accomplish those semantics.
 <p>
 Next: <a href="#Formal-Semantics" accesskey="n" rel="next">Formal Semantics</a>, Previous: <a href="#Internal-Technical-Information" accesskey="p" rel="prev">Internal Technical Information</a>, Up: <a href="#Internal-Technical-Information" accesskey="u" rel="up">Internal Technical Information</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Internal-Knowledge-Structures-1"></span><h3 class="section">9.1 Internal Knowledge Structures</h3>
+<span id="Internal-Knowledge-Structures-1"></span><h3 class="section">10.1 Internal Knowledge Structures</h3>
 <span id="g_t_0023internal_002dknowledge_002dstructures"></span><p>The following <small>SHOP3</small> internal knowledge structures must be defined in
 order to fully specify the semantics of plan generation in <small>SHOP3</small>.
 </p><table class="menu" border="0" cellspacing="0">
@@ -2690,19 +3052,19 @@ order to fully specify the semantics of plan generation in <small>SHOP3</small>.
 <p>
 Next: <a href="#States-and-Satisfiers" accesskey="n" rel="next">States and Satisfiers</a>, Previous: <a href="#Internal-Knowledge-Structures" accesskey="p" rel="prev">Internal Knowledge Structures</a>, Up: <a href="#Internal-Knowledge-Structures" accesskey="u" rel="up">Internal Knowledge Structures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Substitutions-1"></span><h4 class="subsection">9.1.1 Substitutions</h4>
+<span id="Substitutions-1"></span><h4 class="subsection">10.1.1 Substitutions</h4>
 <span id="g_t_0023substitutions"></span>
 <p><strong>Update note:</strong> <em>The variable bindings in a substitution are
 no longer represented by dotted pairs. Instead, they are represented by
-common lisp <strong>structures</strong> that have &lsquo;binding-var&lsquo; and
+Common Lisp <strong>structures</strong> that have &lsquo;binding-var&lsquo; and
 &lsquo;binding-value&lsquo; slots. So, until there has been time for a rewrite,
-please read âbinding structureâ for âdotted pairâ in the following. [rpg
+please read “binding structure” for “dotted pair” in the following. [rpg
 12 June 2018]</em>
 </p>
 <p>A <strong>substitution</strong> is a list of dotted pairs of the form
 </p>
 <blockquote>
-<p><em>((x<sub>1</sub> . t<sub>1</sub>) (x<sub>2</sub> . t<sub>2</sub>) ... (x<sub>k</sub> .
+<p><em>((x<sub>1</sub> . t<sub>1</sub>) (x<sub>2</sub> . t<sub>2</sub>) &hellip; (x<sub>k</sub> .
 t<sub>k</sub>)) </em>
 </p></blockquote>
 <p>where every <em>x<sub>i</sub></em> is a variable symbol and every
@@ -2743,12 +3105,12 @@ expression <em>e</em>, <em>e<sup>u</sup></em> is a strict generalization of
 
 </li></ul>
 
-<p>If <em>e</em> is an expression and <em>x<sub>1</sub>, x<sub>2</sub>, ...,
+<p>If <em>e</em> is an expression and <em>x<sub>1</sub>, x<sub>2</sub>, &hellip;,
 x<sub>k</sub></em> are the variable symbols in <em>e</em>, then a
 <strong>standardizer</strong> for <em>e</em> is a substitution of the form
 </p>
 <blockquote>
-<p><em>((x<sub>1</sub> . y<sub>1</sub>) (x<sub>2</sub> . y<sub>2</sub>) ... (x<sub>k</sub> .
+<p><em>((x<sub>1</sub> . y<sub>1</sub>) (x<sub>2</sub> . y<sub>2</sub>) &hellip; (x<sub>k</sub> .
 y<sub>k</sub>)) </em>
 </p></blockquote>
 <p>where each <em>y<sub>i</sub></em> is a new variable symbol that is not used
@@ -2768,7 +3130,7 @@ mgu&rsquo;s for <em>d</em> and <em>e</em> are equivalent.
 <p>
 Previous: <a href="#Substitutions" accesskey="p" rel="prev">Substitutions</a>, Up: <a href="#Internal-Knowledge-Structures" accesskey="u" rel="up">Internal Knowledge Structures</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="States-and-Satisfiers-1"></span><h4 class="subsection">9.1.2 States and Satisfiers</h4>
+<span id="States-and-Satisfiers-1"></span><h4 class="subsection">10.1.2 States and Satisfiers</h4>
 <span id="g_t_0023states_002dand_002dsatisfiers"></span><p>A <strong>state</strong> is a list of ground atoms intended to represent some
 &quot;state of the world&quot;. A conjunct <em>C</em> is a <strong>consequent</strong> of a
 state <em>S</em> and an axiom list <em>X</em> if every logical expression
@@ -2796,9 +3158,9 @@ value of <em>t</em>, which was evaluated via a call to the Lisp evaluator,
 is a substitution of <em>v</em>, i.e.<em>( v . t).</em> This term is always
 a consequent of <em>S</em> and <em>X</em>;
 
-</li><li> <em>l</em> is an expression of the form (or <em>l<sub>1</sub> l<sub>2</sub> ...
+</li><li> <em>l</em> is an expression of the form (or <em>l<sub>1</sub> l<sub>2</sub> &hellip;
 l<sub>n</sub></em>), where <em>l<sub>1</sub></em>, <em>l<sub>2</sub></em>, <em>l<sub>3</sub></em>,
-..., <em>l<sub>n</sub></em> are logical expressions, and at least one
+&hellip;, <em>l<sub>n</sub></em> are logical expressions, and at least one
 expression in this list is a consequent of <em>S</em> and <em>X;</em>
 
 </li><li> <em>l</em> is an expression of the form (forall <em>V Y Z</em>), where
@@ -2813,7 +3175,7 @@ satisfies <em>Y</em> in <em>S</em> and <em>X</em> also satisfies <em>Z</em> in
 <em>S</em> and <em>X</em>;
 
 </li><li> there exists a substitution <em>v</em> and an axiom(:- <em>a</em> n<sub>1</sub>
-<em>C<sub>1</sub></em> n<sub>2</sub> <em>C<sub>2 </sub></em>... n<sub>n</sub> <em>C<sub>n</sub></em>)
+<em>C<sub>1</sub></em> n<sub>2</sub> <em>C<sub>2 </sub></em>&hellip; n<sub>n</sub> <em>C<sub>n</sub></em>)
 in <em>X</em> such that <em>l</em> = <em>a<sup>v</sup></em> and one of the
 following holds:
 
@@ -2827,10 +3189,10 @@ following holds:
 consequent of <em>S</em> and <em>X</em>, but <em>C<sub>3</sub><sup>v</sup></em> is a
 consequent of <em>S</em> and <em>X</em>;
 
-</li><li> ...;
+</li><li> &hellip;;
 
 </li><li> none of <em>C<sub>1</sub><sup>v</sup></em>, <em>C<sub>2</sub><sup>v</sup></em>,
-<em>C<sub>3</sub><sup>v</sup></em>, ..., <em>C<sub>n-1</sub><sup>v</sup></em> is a consequent of
+<em>C<sub>3</sub><sup>v</sup></em>, &hellip;, <em>C<sub>n-1</sub><sup>v</sup></em> is a consequent of
 <em>S</em> in <em>X</em>, but <em>C<sub>n</sub><sup>v</sup></em> is a consequent of
 <em>S</em> and <em>X</em>.
 
@@ -2877,7 +3239,7 @@ and <em>X</em> is ((?y . convenience-store)).
 <p>
 Next: <a href="#Key-Functions-in-SHOP3" accesskey="n" rel="next">Key Functions in SHOP3</a>, Previous: <a href="#Internal-Knowledge-Structures" accesskey="p" rel="prev">Internal Knowledge Structures</a>, Up: <a href="#Internal-Technical-Information" accesskey="u" rel="up">Internal Technical Information</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Formal-Semantics-1"></span><h3 class="section">9.2 Formal Semantics</h3>
+<span id="Formal-Semantics-1"></span><h3 class="section">10.2 Formal Semantics</h3>
 <span id="g_t_0023formal_002dsemantics"></span><p>Recall that a plan is a list of operator invocations with costs and that
 an operator has an add list and a delete list. Informally, the meaning
 of the plan is that the specified operators are performed in sequence,
@@ -2907,7 +3269,7 @@ domain.
 <p>
 Next: <a href="#Semantics-of-Methods" accesskey="n" rel="next">Semantics of Methods</a>, Previous: <a href="#Formal-Semantics" accesskey="p" rel="prev">Formal Semantics</a>, Up: <a href="#Formal-Semantics" accesskey="u" rel="up">Formal Semantics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Semantics-of-Operators-1"></span><h4 class="subsection">9.2.1 Semantics of Operators</h4>
+<span id="Semantics-of-Operators-1"></span><h4 class="subsection">10.2.1 Semantics of Operators</h4>
 <span id="g_t_0023semantics_002dof_002doperators"></span><p><em><strong>Update note:</strong> <small>SHOP3</small> now supports PDDL operators, which
 have cleaner (but more restricted) semantics. Their semantics is
 discussed in many treatments of the PDDL specification. We hope to add
@@ -3037,7 +3399,7 @@ the list of protected conditions.
 <p>
 Next: <a href="#Semantics-of-Plans" accesskey="n" rel="next">Semantics of Plans</a>, Previous: <a href="#Semantics-of-Operators" accesskey="p" rel="prev">Semantics of Operators</a>, Up: <a href="#Formal-Semantics" accesskey="u" rel="up">Formal Semantics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Semantics-of-Methods-1"></span><h4 class="subsection">9.2.2 Semantics of Methods</h4>
+<span id="Semantics-of-Methods-1"></span><h4 class="subsection">10.2.2 Semantics of Methods</h4>
 <span id="g_t_0023semantics_002dof_002dmethods"></span><p>The purpose of a method is to specify the following:
 </p>
 <ul>
@@ -3049,7 +3411,7 @@ in the order given;
 then <em>h</em> can be accomplished by performing the tasks in
 <em>T<sub>2</sub></em> in the order given;
 
-</li><li> ...;
+</li><li> &hellip;;
 
 </li><li> otherwise, if the current state of the world satisfies <em>C<sub>k</sub></em>,
 then <em>h</em> can be accomplished by performing the tasks in
@@ -3057,29 +3419,29 @@ then <em>h</em> can be accomplished by performing the tasks in
 
 </li></ul>
 
-<p>Let <em>S</em> be a state, <em>X</em> be an axiom list, <em>t</em> be a task
-atom (which may or may not be ground), and <em>m</em> be the method
-(:method <em>h</em> <em>C<sub>1</sub></em> <em>T<sub>1</sub></em> <em>C<sub>2</sub></em>
-<em>T<sub>2</sub></em> ... <em>C<sub>k</sub></em> <em>T<sub>k</sub></em>). Suppose there is
-an mgu <em>u</em> that unifies <em>t</em> with <em>h</em>; and suppose that
-<em>m</em> has a precondition <em>C<sub>i</sub></em> such that <em>S</em> and
-<em>X</em> satisfy <em>C<sub>i</sub><sup>u</sup></em> (if there is more than one such
-precondition, then let <em>C<sub>i</sub></em> be the first such precondition).
-Then we say that <em>m</em> is <strong>applicable</strong> to <em>t</em> in <em>S</em>
-and <em>X</em>, with the <strong>active precondition</strong> <em>C<sub>i</sub></em> and
-the <strong>active tail</strong> <em>T<sub>i</sub></em>. Then the result of applying
-<em>m</em> to <em>t</em> is the following set of task lists:
+<p>Let <var>S</var> be a state, <var>X</var> be an axiom list, <var>t</var> be a task
+atom (which may or may not be ground), and <var>m</var> be the method
+<code>(:method <var>h</var> <var>C<sub>1</sub></var> <var>T<sub>1</sub></var> <var>C<sub>2</sub></var>
+<var>T<sub>2</sub></var> &hellip; <var>C<sub>k</sub></var> <var>T<sub>k</sub></var>)</code>. Suppose there is
+an mgu <var>u</var> that unifies <var>t</var> with <var>h</var>; and suppose that
+<var>m</var> has a precondition <var>C<sub>i</sub></var> such that <var>S</var> and
+<var>X</var> satisfy <var>C<sub>i</sub><sup>u</sup></var> (if there is more than one such
+precondition, then let <var>C<sub>i</sub></var> be the first such precondition).
+Then we say that <var>m</var> is <strong>applicable</strong> to <var>t</var> in <var>S</var>
+and <var>X</var>, with the <strong>active precondition</strong> <var>C<sub>i</sub></var> and
+the <strong>active tail</strong> <var>T<sub>i</sub></var>. Then the result of applying
+<var>m</var> to <var>t</var> is the following set of task lists:
 </p>
 <blockquote>
-<p><em>R</em> = {<em>Call</em>((<em>T<sub>i</sub><sup>u</sup></em>)<em><sup>v</sup></em>):
-<em>v</em> is an mgs for <em>C<sub>i</sub><sup>u</sup></em> from <em>S</em> and
-<em>X</em>}
+<p><var>R</var> = {<var>Call</var>((<var>T<sub>i</sub><sup>u</sup></var>)<var><sup>v</sup></var>):
+<var>v</var> is an mgs for <var>C<sub>i</sub><sup>u</sup></var> from <var>S</var> and
+<var>X</var>}
 </p></blockquote>
 <p>where C<em>all</em> is <small>SHOP3</small>&rsquo;s evaluation function (the function that
-evaluates the values of the call-terms in the form (call f t<sub>1</sub>
-t<sub>2</sub> .. t<sub>n</sub>)). Each task list <em>r</em> in <em>R</em> is called a
-<strong>simple reduction</strong> of <em>t</em> by <em>m</em> in <em>S</em> and
-<em>X.</em> Here is an example:
+evaluates the values of the call terms in the form (call f t<sub>1</sub>
+t<sub>2</sub> .. t<sub>n</sub>)). Each task list <var>r</var> in <var>R</var> is called a
+<strong>simple reduction</strong> of <var>t</var> by <var>m</var> in <var>S</var> and
+<var>X</var>. Here is an example:
 </p>
 <table>
 <tr><td><em>S</em></td><td><code>((has-money john 40) (has-money mary 30))</code></td></tr>
@@ -3128,7 +3490,7 @@ t<sub>2</sub> .. t<sub>n</sub>)). Each task list <em>r</em> in <em>R</em> is cal
 <p>
 Previous: <a href="#Semantics-of-Methods" accesskey="p" rel="prev">Semantics of Methods</a>, Up: <a href="#Formal-Semantics" accesskey="u" rel="up">Formal Semantics</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Semantics-of-Plans-1"></span><h4 class="subsection">9.2.3 Semantics of Plans</h4>
+<span id="Semantics-of-Plans-1"></span><h4 class="subsection">10.2.3 Semantics of Plans</h4>
 <span id="g_t_0023semantics_002dof_002dplans"></span><p>Recall that a planning domain contains axioms, operators, and methods,
 and that a planning problem is a 4-tuple (<em>S,M,L,D</em>), where
 <em>S</em> is a state, <em>M</em> is a task list, <em>L</em> is a protection
@@ -3162,7 +3524,7 @@ tail <em>T<sub>i</sub>.</em>
 </p></blockquote>
 <p><strong>endif</strong>
 </p>
-<p>If <em>P</em> = (<em>p</em><sub>1</sub> <em>p</em><sub>2</sub> ... <em>p<sub>n</sub></em>) is a
+<p>If <em>P</em> = (<em>p</em><sub>1</sub> <em>p</em><sub>2</sub> &hellip; <em>p<sub>n</sub></em>) is a
 plan, then we say that <em>P</em> <strong>solves</strong> (<em>S,M,L,D</em>), or
 equivalently, that <em>P</em> achieves <em>M</em> from <em>S</em> in <em>D</em>
 (we will omit the phrase &quot;in <em>D</em>&quot; if the identity of <em>D</em> is
@@ -3175,7 +3537,7 @@ obvious) in any of the following cases:
 <p><strong>Case 2</strong>.
 </p>
 <blockquote>
-<p><em>T</em> = (<em>t</em><sub>1</sub> <em>t</em><sub>2</sub> ... <em>t<sub>k</sub></em>) is a
+<p><em>T</em> = (<em>t</em><sub>1</sub> <em>t</em><sub>2</sub> &hellip; <em>t<sub>k</sub></em>) is a
 list of tasks in <em>M</em> that have no predecessor for which there is a
 task <em>t</em><sub>i</sub> that has the <code>:immediate</code> keyword and is applicable
 to the current state <em>S</em>.&nbsp; Let (<em>S&rsquo;, M&rsquo;, L&rsquo;</em>) =
@@ -3184,7 +3546,7 @@ reduction(<em>t<sub>i</sub>, S, M, L</em>).&nbsp; We say <em>P</em>
 </p></blockquote>
 <ul>
 <li> <em>t<sub>i</sub></em> is primitive and&nbsp; <em>p<sub>1</sub> = t<sub>i</sub></em> and
-(<em>p<sub>2</sub>&nbsp; p<sub>3</sub> ... p<sub>n</sub></em>) solves (<em>S&rsquo;, M&rsquo;, L&rsquo;, D</em>)
+(<em>p<sub>2</sub>&nbsp; p<sub>3</sub> &hellip; p<sub>n</sub></em>) solves (<em>S&rsquo;, M&rsquo;, L&rsquo;, D</em>)
 
 </li><li> <em>t<sub>i</sub></em> is not primitive, and <em>P</em> solves (<em>S&rsquo;, M&rsquo;, L&rsquo;,
 D</em>)
@@ -3194,7 +3556,7 @@ D</em>)
 <p><strong>Case 3.</strong>
 </p>
 <blockquote>
-<p><em>T</em> = (<em>t</em><sub>1</sub> <em>t</em><sub>2</sub> ... <em>t<sub>k</sub></em>) is a
+<p><em>T</em> = (<em>t</em><sub>1</sub> <em>t</em><sub>2</sub> &hellip; <em>t<sub>k</sub></em>) is a
 list of tasks in <em>M</em> that have no predecessor, where
 <em>t</em><sub>i</sub> is a task in <em>T</em> that&rsquo;s applicable to the current
 state <em>S</em>.&nbsp; Let (<em>S&rsquo;, M&rsquo;, L&rsquo;</em>) = reduction(<em>t<sub>i</sub>, S,
@@ -3203,7 +3565,7 @@ the following is true.
 </p></blockquote>
 <ul>
 <li> <em>t<sub>i</sub></em> is primitive and <em>p<sub>1</sub> = t<sub>i</sub></em> and
-(<em>p<sub>2</sub>&nbsp; p<sub>3</sub> ... p<sub>n</sub></em>) solves (<em>S&rsquo;, M&rsquo;, L&rsquo;, D</em>)
+(<em>p<sub>2</sub>&nbsp; p<sub>3</sub> &hellip; p<sub>n</sub></em>) solves (<em>S&rsquo;, M&rsquo;, L&rsquo;, D</em>)
 
 </li><li> <em>t<sub>i</sub></em> is not primitive and <em>P</em> solves (<em>S&rsquo;, M&rsquo;, L&rsquo;,
 D</em>)
@@ -3243,7 +3605,7 @@ plan that solves it. For example, suppose that
 <p>
 Previous: <a href="#Formal-Semantics" accesskey="p" rel="prev">Formal Semantics</a>, Up: <a href="#Internal-Technical-Information" accesskey="u" rel="up">Internal Technical Information</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Key-Functions-in-SHOP3-1"></span><h3 class="section">9.3 Key Functions in <small>SHOP3</small></h3>
+<span id="Key-Functions-in-SHOP3-1"></span><h3 class="section">10.3 Key Functions in <small>SHOP3</small></h3>
 <p>Below are some important functions in the Lisp implementation of <small>SHOP3</small>.
 They should be of interest to anyone who wishes to modify <small>SHOP3</small> or to
 directly access internal capabilities of <small>SHOP3</small>. Pseudocode algorithms
@@ -3320,7 +3682,7 @@ calling the following (simplified) pseudocode:
 <p><strong>end if</strong>
 </p>
 <p><strong>else if</strong> l is an expression of the form (or p<sub>1</sub> p<sub>2</sub>
-... p<sub>n</sub>) <strong>then</strong>
+&hellip; p<sub>n</sub>) <strong>then</strong>
 </p>
 <p><strong>for</strong> every unifier u that unifies any p<sub>i</sub> with l
 </p>
@@ -3415,7 +3777,7 @@ the list of the axioms defined for the domain under consideration.
 <p><code>(apply-method S t m)</code>
 </p>
 <p>If <em>S</em> is a state, <em>t</em> is a task, and 
-<em>m</em> = <code>(:method h C<sub>1</sub> T<sub>1</sub> C<sub>2</sub> T<sub>2</sub> ... C<sub>k</sub> T<sub>k</sub>) </code>is a method,
+<em>m</em> = <code>(:method h C<sub>1</sub> T<sub>1</sub> C<sub>2</sub> T<sub>2</sub> &hellip; C<sub>k</sub> T<sub>k</sub>) </code>is a method,
 then this function does the following:
 </p>
 <ul>
@@ -3558,9 +3920,9 @@ are not evaluated. This changes the syntax one uses. Thus in a SHOP 1.x
 domain one might define a problem as
 </p>
 <div class="lisp">
-<pre class="lisp">(make-problem â<var>problem-name</var> â<var>domain-name</var>
-    â<var>(list of state atoms)</var>
-    â<var>(list of tasks to be accomplished)</var>)
+<pre class="lisp">(make-problem ‘<var>problem-name</var> ‘<var>domain-name</var>
+    ‘<var>(list of state atoms)</var>
+    ‘<var>(list of tasks to be accomplished)</var>)
 </pre></div>
 
 <p>whereas in <small>SHOP3</small> the syntax becomes
@@ -3611,363 +3973,10 @@ of a problem set. This function runs <code>find-plans</code> on each planning pr
 specified by the list or problem set, and then returns nil. The keywords
 are simply passed on to find-plans.
 </p>
-
-
-<hr>
-<span id="Version-Differences"></span><div class="header">
-<p>
-Next: <a href="#General-Notes-on-SHOP3" accesskey="n" rel="next">General Notes on SHOP3</a>, Previous: <a href="#Internal-Technical-Information" accesskey="p" rel="prev">Internal Technical Information</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
-</div>
-<span id="Differences-between-SHOP-1_002ex_002c-SHOP2-and-SHOP3"></span><h2 class="chapter">10 Differences between SHOP 1.x, SHOP2 and <small>SHOP3</small></h2>
-
-<p>The differences between <small>SHOP3</small> and SHOP 1.x can be grouped in two sets:
-syntactic changes in the domain definitions and differences in
-functionality.
-</p>
-<p><em><strong>Note:</strong> This section has not been updated since the
-extensive modifications were made to <small>SHOP3</small> (since as time goes by, the
-number of people who would find it useful dwindles more and more). It
-provides an effective description of the difference between SHOP1 and
-the <strong>original</strong></em> <em><small>SHOP3</small> syntax, but does not reflect updates
-in the past decade. This section should probably be removed. &ndash; rpg
-December 22, 2017</em>
-</p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#SHOP-1x-Syntax-Comparison" accesskey="1">SHOP 1x Syntax Comparison</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#SHOP-1x-Functionality-Comparison" accesskey="2">SHOP 1x Functionality Comparison</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
-
-<hr>
-<span id="SHOP-1x-Syntax-Comparison"></span><div class="header">
-<p>
-Next: <a href="#SHOP-1x-Functionality-Comparison" accesskey="n" rel="next">SHOP 1x Functionality Comparison</a>, Previous: <a href="#Version-Differences" accesskey="p" rel="prev">Version Differences</a>, Up: <a href="#Version-Differences" accesskey="u" rel="up">Version Differences</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
-</div>
-<span id="SHOP-1_002ex-Syntax-Comparison"></span><h3 class="section">10.1 SHOP 1.x Syntax Comparison</h3>
-<span id="g_t_0023shop_002d1_002ex_002dsyntax_002dcomparison"></span><p>The table below gives examples of SHOP 1.x syntax, comparing it to the
-syntax used in <small>SHOP3</small>:
-</p>
-<table>
-<tr><td><strong><small>SHOP1</small> syntax</strong></td><td><strong><small>SHOP2</small> Syntax</strong></td></tr>
-<tr><td>(make-domain &rsquo;travel
-
-<p>&rsquo;(
-</p>
-<p>(:- (have-taxi-fare ?distance)
-</p>
-<p>((have-cash ?m)
-</p>
-<p>(eval (&gt;= ?m (+ 1.5 ?distance)))))
-</p>
-<p>(:- (walking-distance ?u ?v)
-</p>
-<p>((weather-is&rsquo;good)<br>
-(distance ?u ?v ?w)<br>
-(eval (&lt;= ?w 3)))
-</p>
-<p>((distance ?u ?v ?w)
-</p>
-<p>(eval (&lt;= ?w 0.5))))
-</p>
-<p>(:method (pay-driver ?fare)
-</p>
-<p>((have-cash ?m)<br>
-(eval (&gt;= ?m ?fare)))
-</p>
-<p>&lsquo;((!set-cash ?m ,(- ?m ?fare))))
-</p>
-<p>(:method (travel-to ?q)
-</p>
-<p>((at ?p) (walking-distance ?p ?q))
-</p>
-<p>&rsquo;((!walk ?p ?q)))
-</p>
-<p>(:method (travel-to ?y)
-</p>
-<p>((at ?x) (at-taxi-stand ?t ?x)
-</p>
-<p>(distance ?x ?y ?d) (have-taxi-fare ?d))<br>
-&lsquo;((!hail ?t ?x) (!ride ?t ?x ?y)
-</p>
-<p>(pay-driver ,(+ 1.50 ?d)))
-</p>
-<p>((at ?x) (bus-route ?bus ?x ?y))
-</p>
-<p>&lsquo;((!wait-for ?bus ?x) (pay-driver 1.00)<br>
-(!ride ?bus ?x ?y)))
-</p>
-<p>(:operator (!hail ?vehicle ?location)
-</p>
-<p>()
-</p>
-<p>((at ?vehicle ?location)))
-</p>
-<p>(:operator (!wait-for ?bus ?location)
-</p>
-<p>()
-</p>
-<p>((at ?bus ?location)))
-</p>
-<p>(:operator (!ride ?vehicle ?a ?b)
-</p>
-<p>((at ?a) (at ?vehicle ?a))
-</p>
-<p>((at ?b) (at ?vehicle ?b)))
-</p>
-<p>(:operator (!set-cash ?old ?new)
-</p>
-<p>((have-cash ?old))
-</p>
-<p>((have-cash ?new)))
-</p>
-<p>(:operator (!walk ?here ?there)
-</p>
-<p>((at ?here))
-</p>
-<p>((at ?there)))
-</p>
-<p>))
- </p></td><td>(defdomain travel
-
-<p>(
-</p>
-<p>(:- (have-taxi-fare ?distance)
-</p>
-<p>((have-cash ?m)
-</p>
-<p>(call &gt;= ?m (call + 1.5 ?distance))))
-</p>
-<p>(:- (walking-distance ?u ?v)
-</p>
-<p>good ((weather-is good)<br>
-(distance ?u ?v ?w)<br>
-(call &lt;= ?w 3))
-</p>
-<p>bad ( (distance ?u ?v ?w)
-</p>
-<p>(call &lt;= ?w 0.5)))
-</p>
-<p>(:method (pay-driver ?fare)
-</p>
-<p>((have-cash ?m)<br>
-(call &gt;= ?m ?fare))
-</p>
-<p>((!set-cash ?m ( call - ?m ?fare))))
-</p>
-<p>(:method (travel-to ?q)
-</p>
-<p>((at ?p) (walking-distance ?p ?q))
-</p>
-<p>((!walk ?p ?q)))
-</p>
-<p>(:method (travel-to ?y)
-</p>
-<p>by-taxi
-</p>
-<p>((at ?x) (at-taxi-stand ?t ?x)
-</p>
-<p>(distance ?x ?y ?d) (have-taxi-fare ?d))<br>
-((!hail ?t ?x) (!ride ?t ?x ?y)
-</p>
-<p>(pay-driver (call + 1.50 ?d)))
-</p>
-<p>by-bus
-</p>
-<p>((at ?x) (bus-route ?bus ?x ?y))
-</p>
-<p>((!wait-for ?bus ?x) (pay-driver 1.00)<br>
-(!ride ?bus ?x ?y)))
-</p>
-<p>(:operator (!hail ?vehicle ?location)
-</p>
-<p>() ()
-</p>
-<p>((at ?vehicle ?location)))
-</p>
-<p>(:operator (!wait-for ?bus ?location)
-</p>
-<p>() ()
-</p>
-<p>((at ?bus ?location)))
-</p>
-<p>(:operator (!ride ?vehicle ?a ?b)
-</p>
-<p>()<br>
-((at ?a) (at ?vehicle ?a))
-</p>
-<p>((at ?b) (at ?vehicle ?b)))
-</p>
-<p>(:operator (!set-cash ?old ?new)
-</p>
-<p>((have-cash ?old))
-</p>
-<p>((have-cash ?old))
-</p>
-<p>((have-cash ?new)))
-</p>
-<p>(:operator (!walk ?here ?there)
-</p>
-<p>((at ?here))
-</p>
-<p>((at ?here))
-</p>
-<p>((at ?there)))
-</p>
-<p>))
-</p></td></tr>
-<tr><td>(make-problem &rsquo;go-park-rich &rsquo;travel
-
-<p>&lsquo;((distance downtown park 2)
-</p>
-<p>(distance downtown uptown 8)
-</p>
-<p>(distance downtown suburb 12)
-</p>
-<p>(at-taxi-stand taxi1 downtown)
-</p>
-<p>(at-taxi-stand taxi2 downtown)
-</p>
-<p>(bus-route bus1 downtown park)
-</p>
-<p>(bus-route bus2 downtown uptown)
-</p>
-<p>(bus-route bus3 downtown suburb)
-</p>
-<p>(at downtown)
-</p>
-<p>(weather-is good)
-</p>
-<p>(have-cash 80))
-</p>
-<p>&rsquo;((travel-to park)))
- </p></td><td>(defproblem go-park-rich travel
-
-<p>((distance downtown park 2)
-</p>
-<p>(distance downtown uptown 8)
-</p>
-<p>(distance downtown suburb 12)
-</p>
-<p>(at-taxi-stand taxi1 downtown)
-</p>
-<p>(at-taxi-stand taxi2 downtown)
-</p>
-<p>(bus-route bus1 downtown park)
-</p>
-<p>(bus-route bus2 downtown uptown)
-</p>
-<p>(bus-route bus3 downtown suburb)
-</p>
-<p>(at downtown)
-</p>
-<p>(weather-is good)
-</p>
-<p>(have-cash 80))
-</p>
-<p>((travel-to park)))
-</p></td></tr>
-<tr><td>(make-problem-set &rsquo;travel
-
-<p>&rsquo;( go-park-broke
-</p>
-<p>go-park-rich
-</p>
-<p>))
- </p></td><td>(def-problem-set travel
-
-<p>(go-park-broke
-</p>
-<p>go-park-rich
-</p>
-<p>))
-</p>
-<p>*def-problem-set is not available in JSHOP
-</p></td></tr>
-<tr><td>(do-problems &rsquo;travel :which :all)</td><td>Works in <small>SHOP3</small> without any changes. Not available in JSHOP.</td></tr>
-</table>
-
-<p>To summarize, the changes in syntax are as follows:
-</p>
-<ul>
-<li> Quotes, back quotes and commas are not used in <small>SHOP3</small> except as needed in
-general Lisp expressions.
-
-</li><li> <em>make-domain</em> is replaced with <em>defdomain.</em>
-
-</li><li> <em>make-problem</em> is replaced with <em>defproblem.</em>
-
-</li><li> Operators may have preconditions in <small>SHOP3</small>.
-
-</li><li> The tail of an axiom can have names for each of the conjuncts, and the
-tail of a method can have names for each of the precondition-tail pairs.
-These names are optional.
-
-</li><li> An ordinary list can be differentiated from a predicate or a function by
-inserting the optional label, <em>list</em>, before the first element of
-the list.
-
-</li><li> In SHOP 1.x it was valid to have methods of the following form, where
-<em>e</em> is any Lisp expression:
-
-</li></ul>
-
-<blockquote>
-<p>(:method (varSubtasks ?tasklist)
-</p>
-<p>((precondition))<br>
-<em>e</em>)
-</p>
-<p>This kind of method is not supported in <small>SHOP3</small>.
-</p></blockquote>
-<p>Note that in many cases, <small>SHOP3</small> is able to process SHOP 1.x syntax (i.e.,
-<small>SHOP3</small> is partially backward compatible). For example, the old
-<em>make-domain</em> and <em>make-problem</em> forms can be handled by
-<small>SHOP3</small>. It is recommended, however, that new domains be written using the
-new <small>SHOP3</small> forms.
-</p>
-<hr>
-<span id="SHOP-1x-Functionality-Comparison"></span><div class="header">
-<p>
-Previous: <a href="#SHOP-1x-Syntax-Comparison" accesskey="p" rel="prev">SHOP 1x Syntax Comparison</a>, Up: <a href="#Version-Differences" accesskey="u" rel="up">Version Differences</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
-</div>
-<span id="SHOP-1_002ex-Functionality-Comparison"></span><h3 class="section">10.2 SHOP 1.x Functionality Comparison</h3>
-<span id="g_t_0023shop_002d1_002ex_002dfunctionality_002dcomparison"></span><p>The following are some key differences between the functionality of SHOP
-1.x and <small>SHOP3</small>:
-</p>
-<ul>
-<li> Unlike SHOP 1.x, <small>SHOP3</small> allows the combination of partially ordered and
-fully ordered tasks through the use of the :unordered and :ordered
-keywords.
-
-</li></ul>
-
-<ul>
-<li> The following keywords in <small>SHOP3</small> domain definitions are not supported in
-SHOP 1.x: or, assign, sort-by, forall. The functionality associated with
-those keywords is not available in SHOP 1.x.
-
-</li><li> The not keyword in SHOP 1.x can only be applied to individual atoms, not
-to arbitrary logical expressions.
-
-</li><li> The :optimize-cost, :time-limit, and :plan-tree keyword arguments for
-<small>SHOP3</small> are not supported in SHOP 1.x. The functionality associated with
-those keywords is not available in SHOP 1.x.
-
-</li><li> The debugging features in <small>SHOP3</small> (see Sections 5.2 and 5.3) are not
-present in SHOP 1.x.
-
-</li><li> <small>SHOP3</small> version 1.1 includes a Java interface. SHOP 1.x has no such
-interface.
-
-</li></ul>
-
-<p><small>SHOP3</small> is largely backward compatible with SHOP 1.x . <small>SHOP3</small> can run most
-SHOP 1.x knowledge bases with only little or no modification.
-</p>
 <hr>
 <span id="General-Notes-on-SHOP3"></span><div class="header">
 <p>
-Next: <a href="#Acknowledgments" accesskey="n" rel="next">Acknowledgments</a>, Previous: <a href="#Version-Differences" accesskey="p" rel="prev">Version Differences</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Acknowledgments" accesskey="n" rel="next">Acknowledgments</a>, Previous: <a href="#Internal-Technical-Information" accesskey="p" rel="prev">Internal Technical Information</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="General-Notes-on-SHOP3-1"></span><h2 class="chapter">11 General Notes on <small>SHOP3</small></h2>
 <ol>
@@ -4089,15 +4098,15 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 <span id="g_t_0023references"></span><p>[Dean and Boddy, 1998] T. Dean and M. Boddy. An analysis of
 time-dependent planning. In <em>AAAI-88</em>, 1988.
 </p>
-<p>[Nau <em>et al.</em>, 1999] D. Nau, Y. Cao, A. Lotem, and H. MuÃ±oz-Avila.
+<p>[Nau <em>et al.</em>, 1999] D. Nau, Y. Cao, A. Lotem, and H. Muñoz-Avila.
 SHOP: Simple Hierarchical Ordered Planner. In <em>IJCAI-99</em>, 1999.
 </p>
 <p>[Nau <em>et al.</em>, 2000] D. S. Nau, Y. Cao, A. Lotem, and H.
-MuÃ±oz-Avila. SHOP and M-SHOP: Planning with Ordered Task Decomposition.
+Muñoz-Avila. SHOP and M-SHOP: Planning with Ordered Task Decomposition.
 Tech report TR 4157, University of Maryland, College Park, MD, June
 2000.
 </p>
-<p>[Nau <em>et al.</em>, 2001] D. S. Nau, H. MuÃ±oz-Avila Y. Cao, A. Lotem,
+<p>[Nau <em>et al.</em>, 2001] D. S. Nau, H. Muñoz-Avila Y. Cao, A. Lotem,
 and.S. Mitchell. Totally Ordered Planning with Partially Ordered
 Subtasks. In <em>IJCAI-01</em>, 2001.
 </p>
@@ -4111,6 +4120,8 @@ Next: <a href="#Type-and-Class-Index" accesskey="n" rel="next">Type and Class In
  &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-B"><b>B</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Function-Index_fn_letter-C"><b>C</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-D"><b>D</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-E"><b>E</b></a>
@@ -4119,11 +4130,15 @@ Next: <a href="#Type-and-Class-Index" accesskey="n" rel="next">Type and Class In
  &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-G"><b>G</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Function-Index_fn_letter-I"><b>I</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-M"><b>M</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-P"><b>P</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-Q"><b>Q</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-Index_fn_letter-R"><b>R</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-S"><b>S</b></a>
  &nbsp; 
@@ -4140,8 +4155,12 @@ Next: <a href="#Type-and-Class-Index" accesskey="n" rel="next">Type and Class In
 <tr><th id="Function-Index_fn_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-anonymous_002dvar_002dp-_005bshopunif_005d"><code>anonymous-var-p [shopunif]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Unifier">The SHOP Unifier</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-anonymous_002dvar_002dp-_005bshopunif_005d-1"><code>anonymous-var-p [shopunif]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Unifier">The SHOP Unifier</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-APPLY_002dACTION"><code>APPLY-ACTION</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Metric-Fluents">PDDL Metric Fluents</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-apply_002dsubstitution-_005bshopunif_005d"><code>apply-substitution [shopunif]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Unifier">The SHOP Unifier</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-apply_002dsubstitution-_005bshopunif_005d-1"><code>apply-substitution [shopunif]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Unifier">The SHOP Unifier</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-around-make_002dinitial_002dstate-_005bshop3cmn_005d"><code>around make-initial-state [shop3cmn]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#States">States</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-atom_002din_002dstate_002dp-_005bshop3cmn_005d"><code>atom-in-state-p [shop3cmn]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#States">States</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-atom_002din_002dstate_002dp-_005bshop3cmn_005d-1"><code>atom-in-state-p [shop3cmn]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#States">States</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Function-Index_fn_letter-B">B</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-binding_002dlist_002dvalue-_005bshopunif_005d"><code>binding-list-value [shopunif]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Unifier">The SHOP Unifier</a></td></tr>
@@ -4151,8 +4170,14 @@ Next: <a href="#Type-and-Class-Index" accesskey="n" rel="next">Type and Class In
 <tr><td></td><td valign="top"><a href="#index-binding_002dvar-_005bshopunif_005d"><code>binding-var [shopunif]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Unifier">The SHOP Unifier</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-binding_002dvar-_005bshopunif_005d-1"><code>binding-var [shopunif]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Unifier">The SHOP Unifier</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-Index_fn_letter-C">C</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-copy_002dstate-_005bshop3cmn_005d"><code>copy-state [shop3cmn]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#States">States</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-copy_002dstate-_005bshop3cmn_005d-1"><code>copy-state [shop3cmn]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#States">States</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Function-Index_fn_letter-D">D</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-def_002dproblem_002dset"><code>def-problem-set</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Planning-Problem-Set">Planning Problem Set</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-defdomain"><code>defdomain</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Simple-Form">Simple Form</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-defdomain-1"><code>defdomain</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Extended-form">Extended form</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-defproblem"><code>defproblem</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Planning-Problem">Planning Problem</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-defproblem-1"><code>defproblem</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Planning-Problem">Planning Problem</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-defproblem-2"><code>defproblem</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Planning-Problem">Planning Problem</a></td></tr>
@@ -4178,9 +4203,15 @@ Next: <a href="#Type-and-Class-Index" accesskey="n" rel="next">Type and Class In
 <tr><td></td><td valign="top"><a href="#index-groundp-_005bshopunif_005d"><code>groundp [shopunif]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Unifier">The SHOP Unifier</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-groundp-_005bshopunif_005d-1"><code>groundp [shopunif]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Unifier">The SHOP Unifier</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-Index_fn_letter-I">I</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-insert_002datom-_005bshop3cmn_005d"><code>insert-atom [shop3cmn]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#States">States</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-insert_002datom-_005bshop3cmn_005d-1"><code>insert-atom [shop3cmn]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#States">States</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Function-Index_fn_letter-M">M</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-make_002dbinding_002dlist-_005bshopunif_005d"><code>make-binding-list [shopunif]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Unifier">The SHOP Unifier</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-make_002dbinding_002dlist-_005bshopunif_005d-1"><code>make-binding-list [shopunif]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Unifier">The SHOP Unifier</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-make_002dinitial_002dstate-_005bshop3cmn_005d"><code>make-initial-state [shop3cmn]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#States">States</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-make_002dinitial_002dstate-_005bshop3cmn_005d-1"><code>make-initial-state [shop3cmn]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#States">States</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-make_002dproblem"><code>make-problem</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Planning-Problem">Planning Problem</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-make_002dproblem-1"><code>make-problem</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Planning-Problem">Planning Problem</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -4194,6 +4225,10 @@ Next: <a href="#Type-and-Class-Index" accesskey="n" rel="next">Type and Class In
 <tr><td></td><td valign="top"><a href="#index-query-_005bshopthpr_005d"><code>query [shopthpr]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Theorem-Prover">The SHOP Theorem Prover</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-query-_005bshopthpr_005d-1"><code>query [shopthpr]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Theorem-Prover">The SHOP Theorem Prover</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-Index_fn_letter-R">R</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-remove_002datom-_005bshop3cmn_005d"><code>remove-atom [shop3cmn]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#States">States</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-remove_002datom-_005bshop3cmn_005d-1"><code>remove-atom [shop3cmn]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#States">States</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Function-Index_fn_letter-S">S</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-shop_002dtrace"><code>shop-trace</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Tracing">Tracing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-shop_002dtrace-1"><code>shop-trace</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Tracing">Tracing</a></td></tr>
@@ -4203,6 +4238,11 @@ Next: <a href="#Type-and-Class-Index" accesskey="n" rel="next">Type and Class In
 <tr><td></td><td valign="top"><a href="#index-shorter_002dplan-1"><code>shorter-plan</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Plans">Plans</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-standardize-_005bshopunif_005d"><code>standardize [shopunif]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Unifier">The SHOP Unifier</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-standardize-_005bshopunif_005d-1"><code>standardize [shopunif]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-SHOP-Unifier">The SHOP Unifier</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-state_002d_003estate_002dtype-_005bshop3cmn_005d"><code>state-&gt;state-type [shop3cmn]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#States">States</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-state_002d_003estate_002dtype-_005bshop3cmn_005d-1"><code>state-&gt;state-type [shop3cmn]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#States">States</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-state_002datoms-_005bshop3cmn_005d"><code>state-atoms [shop3cmn]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#States">States</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-state_002datoms-_005bshop3cmn_005d-1"><code>state-atoms [shop3cmn]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#States">States</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-state_002datoms-_005bshop3cmn_005d-2"><code>state-atoms [shop3cmn]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#States">States</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Function-Index_fn_letter-T">T</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-trace_002dquery_002dhook"><code>trace-query-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Hook-Routines">Hook Routines</a></td></tr>
@@ -4228,6 +4268,8 @@ Next: <a href="#Type-and-Class-Index" accesskey="n" rel="next">Type and Class In
  &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-B"><b>B</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Function-Index_fn_letter-C"><b>C</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-D"><b>D</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-E"><b>E</b></a>
@@ -4236,11 +4278,15 @@ Next: <a href="#Type-and-Class-Index" accesskey="n" rel="next">Type and Class In
  &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-G"><b>G</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Function-Index_fn_letter-I"><b>I</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-M"><b>M</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-P"><b>P</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-Q"><b>Q</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-Index_fn_letter-R"><b>R</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-S"><b>S</b></a>
  &nbsp; 
@@ -4267,6 +4313,8 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
 <a class="summary-letter" href="#Type-and-Class-Index_tp_letter-D"><b>D</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Type-and-Class-Index_tp_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Type-and-Class-Index_tp_letter-F"><b>F</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Type-and-Class-Index_tp_letter-N"><b>N</b></a>
  &nbsp; 
@@ -4305,10 +4353,15 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-EQUALITY_002dMIXIN"><code>EQUALITY-MIXIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-EXISTENTIAL_002dPRECONDITIONS_002dMIXIN"><code>EXISTENTIAL-PRECONDITIONS-MIXIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Type-and-Class-Index_tp_letter-F">F</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-FLUENTS_002dMIXIN"><code>FLUENTS-MIXIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Metric-Fluents">PDDL Metric Fluents</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-FLUENTS_002dMIXIN-1"><code>FLUENTS-MIXIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Type-and-Class-Index_tp_letter-N">N</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-NEGATIVE_002dPRECONDITIONS_002dMIXIN"><code>NEGATIVE-PRECONDITIONS-MIXIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Type-and-Class-Index_tp_letter-P">P</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-pddl_002ddomain"><code>pddl-domain</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-domain-variable">The domain variable</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PDDL_002dDOMAIN"><code>PDDL-DOMAIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PDDL_002dTYPING_002dMIXIN"><code>PDDL-TYPING-MIXIN</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Domain-Classes">PDDL Domain Classes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-plan_002dtree_002dgraph-_005bspg_005d"><code>plan-tree-graph [spg]</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Plan-Grapher">Plan Grapher</a></td></tr>
@@ -4338,6 +4391,8 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
  &nbsp; 
 <a class="summary-letter" href="#Type-and-Class-Index_tp_letter-E"><b>E</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Type-and-Class-Index_tp_letter-F"><b>F</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Type-and-Class-Index_tp_letter-N"><b>N</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Type-and-Class-Index_tp_letter-P"><b>P</b></a>
@@ -4366,10 +4421,11 @@ Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previ
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Variable-Index_vr_symbol-1">*</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002abreak_002don_002dbacktrack_002a"><code>*break-on-backtrack*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-Debugging-Features">Other Debugging Features</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_002abreak_002don_002dbacktrack_002a-1"><code>*break-on-backtrack*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-Debugging-Features">Other Debugging Features</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002acurrent_002dplan_002a"><code>*current-plan*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-Debugging-Features">Other Debugging Features</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002acurrent_002dstate_002a"><code>*current-state*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-Debugging-Features">Other Debugging Features</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002acurrent_002dtasks_002a"><code>*current-tasks*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-Debugging-Features">Other Debugging Features</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_002adomain_002a"><code>*domain*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Extended-form">Extended form</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_002adomain_002a"><code>*domain*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-domain-variable">The domain variable</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002aproblem_002a"><code>*problem*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Planning-Problem">Planning Problem</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002awhich_002a"><code>*which*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Common-Keyword-Arguments">Common Keyword Arguments</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -4392,11 +4448,17 @@ Next: <a href="#Colophon" accesskey="n" rel="next">Colophon</a>, Previous: <a hr
  &nbsp; 
 <a class="summary-letter" href="#Concept-Index_cp_letter-E"><b>E</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-F"><b>F</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Concept-Index_cp_letter-H"><b>H</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Concept-Index_cp_letter-I"><b>I</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-O"><b>O</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Concept-Index_cp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-Q"><b>Q</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Concept-Index_cp_letter-S"><b>S</b></a>
  &nbsp; 
@@ -4412,22 +4474,40 @@ Next: <a href="#Colophon" accesskey="n" rel="next">Colophon</a>, Previous: <a hr
 <tr><td></td><td valign="top"><a href="#index-assignment">assignment</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Assignments">Assignments</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Concept-Index_cp_letter-D">D</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-defdomain_002c-extended-form">defdomain, extended form</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Extended-form">Extended form</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-domain">domain</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Planning-Domain">Planning Domain</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-domain-_003anoset-argument">domain :noset argument</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Extended-form">Extended form</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-domain-_003aredefine_002dok-argument">domain :redefine-ok argument</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Extended-form">Extended form</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-domain-_003atype-argument">domain :type argument</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Extended-form">Extended form</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-domain-inclusion">domain inclusion</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Inclusion-directives">Inclusion directives</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Concept-Index_cp_letter-E">E</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-explanation">explanation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Common-Keyword-Arguments">Common Keyword Arguments</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Concept-Index_cp_letter-F">F</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-F_002dEXP_002dVALUE">F-EXP-VALUE</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Metric-Fluents">PDDL Metric Fluents</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-FLUENT_002dCHECK">FLUENT-CHECK</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Metric-Fluents">PDDL Metric Fluents</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-FLUENT_002dVALUE">FLUENT-VALUE</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PDDL-Metric-Fluents">PDDL Metric Fluents</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Concept-Index_cp_letter-H">H</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-hook_002droutines">hook-routines</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Hook-Routines">Hook Routines</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Concept-Index_cp_letter-I">I</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-implicit-conjunction">implicit conjunction</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Conjuncts">Conjuncts</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-include-directives">include directives</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Inclusion-directives">Inclusion directives</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-internal-operators">internal operators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Operators">Operators</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-internal-operators">internal operators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-Operators">Internal Operators</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Concept-Index_cp_letter-O">O</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Operators_002c-deterministic">Operators, deterministic</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Operators-must-be-deterministic">Operators must be deterministic</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Concept-Index_cp_letter-P">P</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PDDL-method-preconditions">PDDL method preconditions</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Enhanced-Preconditions">Enhanced Preconditions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-planning-problem">planning problem</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Planning-Problem">Planning Problem</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-plans">plans</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Plans">Plans</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-protections">protections</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Protection-conditions">Protection conditions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Concept-Index_cp_letter-Q">Q</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-quoting-in-call-and-eval-terms">quoting in call and eval terms</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Eval-Terms">Eval Terms</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Concept-Index_cp_letter-S">S</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-singleton-variables">singleton variables</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Syntax-Checks">Syntax Checks</a></td></tr>
@@ -4443,11 +4523,17 @@ Next: <a href="#Colophon" accesskey="n" rel="next">Colophon</a>, Previous: <a hr
  &nbsp; 
 <a class="summary-letter" href="#Concept-Index_cp_letter-E"><b>E</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-F"><b>F</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Concept-Index_cp_letter-H"><b>H</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Concept-Index_cp_letter-I"><b>I</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-O"><b>O</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Concept-Index_cp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-Index_cp_letter-Q"><b>Q</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Concept-Index_cp_letter-S"><b>S</b></a>
  &nbsp; 
@@ -4475,17 +4561,32 @@ provided by Nikodemus Siivola and Rudi Schlatte, for which we are very grateful.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>From <em>Automated Planning: Theory and
 Practice,</em> Ghallab, Nau and Traverso, Morgan Kaufmann, 2004.</p>
-<h3><a id="FOOT2" href="#DOCF2">(2)</a></h3>
-<p>The term
-âclassâ here is meant <em>informally;</em> the reader should draw no
-conclusions about programming language classes in the SHOP
-implementation. &ndash; <em>rpg</em></p>
-<h3><a id="FOOT3" href="#DOCF3">(3)</a></h3>
+<h5><a id="FOOT2" href="#DOCF2">(2)</a></h3>
+<p>A somewhat cumbersome way to verify this is as follows:
+</p><div class="lisp">
+<pre class="lisp">(defdomain test-domain ((:- (= ?x ?x) ())))
+(query '((= ?foo list)
+            (= ?bar 4)
+            (assign ?baz (?foo (&lt; ?bar 3) (list '?foo 'fish) (/ 8 ?bar)))) 
+        (shop::make-initial-state 'test-domain :mixed nil)  
+        :domain 'test-domain)
+</pre></div>
+<h5><a id="FOOT3" href="#DOCF3">(3)</a></h3>
+<p>The term “class” here is meant <em>informally;</em>
+the reader should draw no conclusions about programming language
+classes in the SHOP implementation. &ndash; <em>rpg</em></p>
+<h5><a id="FOOT4" href="#DOCF4">(4)</a></h3>
+<p>Which must be a subclass of the <code>shop:domain</code> Common Lisp class.</p>
+<h5><a id="FOOT5" href="#DOCF5">(5)</a></h3>
 <p>If you don&rsquo;t know what this means,
 you may safely ignore it.</p>
+<h5><a id="FOOT6" href="#DOCF6">(6)</a></h3>
+<p>Note that the state
+of the world is <em>not</em> the same as the search state.  The
+(projected) world state is only one component of the search state.</p>
 </div>
 <hr>
 
